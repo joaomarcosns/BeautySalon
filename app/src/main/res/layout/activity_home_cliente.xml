@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".clientes.HomeCliente">
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/home"
+            android:src="@drawable/ic_home"
+            app:layout_constraintEnd_toStartOf="@id/img_love"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_love"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_love"
+            app:layout_constraintEnd_toStartOf="@id/img_search"
+            app:layout_constraintStart_toEndOf="@id/img_home" />
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toStartOf="@id/img_user"
+            app:layout_constraintStart_toEndOf="@id/img_love" />
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/usuario"
+            android:src="@drawable/ic_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_search" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_actionfooter"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/localizacao"
+                style="@style/localizacao"
+                android:layout_width="123dp"
+                android:layout_height="42dp"
+                android:text="@string/igapora"
+                android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_gps"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/estabelecimentos"
+                style="@style/localizacao"
+                android:layout_width="187dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/estabelecimentos"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/localizacao" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/id_list_item"
+                android:layout_width="409dp"
+                android:layout_height="579dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/estabelecimentos" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

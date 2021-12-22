@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".clientes.Search"
+    android:background="@color/background"
+    >
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/home"
+            android:src="@drawable/ic_home"
+            app:layout_constraintEnd_toStartOf="@id/img_love"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_love"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_love"
+            app:layout_constraintStart_toEndOf="@id/img_home"
+            app:layout_constraintEnd_toStartOf="@id/img_search"/>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_search"
+            app:layout_constraintStart_toEndOf="@id/img_love"
+            app:layout_constraintEnd_toStartOf="@id/img_user"/>
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/usuario"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toEndOf="@id/img_search"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--NestedScrollView-->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_actionfooter"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/edit_search"
+                style="@style/EditText"
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="@string/pesquisar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_categoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/categorias"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_search" />
+
+            <ImageView
+                android:id="@+id/img_manicure"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_manicure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_categoria" />
+
+            <ImageView
+                android:id="@+id/img_pedicure"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_pedicure"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.665"
+                app:layout_constraintStart_toEndOf="@+id/img_manicure"
+                app:layout_constraintTop_toBottomOf="@+id/text_categoria" />
+
+            <ImageView
+                android:id="@+id/img_cabeleireira"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_cabeleireira"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_manicure" />
+
+            <ImageView
+                android:id="@+id/img_massagem"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_massagem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toEndOf="@+id/img_cabeleireira"
+                app:layout_constraintTop_toBottomOf="@+id/img_pedicure" />
+
+            <ImageView
+                android:id="@+id/img_maquiagem"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_maquiadora"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_cabeleireira" />
+
+            <ImageView
+                android:id="@+id/img_depilacao"
+                android:layout_width="177dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_depilacao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toEndOf="@+id/img_maquiagem"
+                app:layout_constraintTop_toBottomOf="@+id/img_massagem" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+    <!-- ScrollView -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

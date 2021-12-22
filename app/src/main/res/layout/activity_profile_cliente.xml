@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".clientes.ProfileCliente">
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/home"
+            android:src="@drawable/ic_home"
+            app:layout_constraintEnd_toStartOf="@id/img_love"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_love"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_love"
+            app:layout_constraintEnd_toStartOf="@id/img_search"
+            app:layout_constraintStart_toEndOf="@id/img_home" />
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/pesquisar"
+            android:src="@drawable/ic_search"
+            app:layout_constraintEnd_toStartOf="@id/img_user"
+            app:layout_constraintStart_toEndOf="@id/img_love" />
+
+        <ImageView
+            android:id="@+id/img_user"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/usuario"
+            android:src="@drawable/ic_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_search" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_actionfooter"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_meus_dados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Meus Dados"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/containerComponents"
+                style="@style/ContainerComponentsEmpresa"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_meus_dados">
+
+                <EditText
+                    android:id="@+id/edit_nome"
+                    style="@style/EditText"
+                    android:hint="JOAO MARCOS"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+                    app:layout_constraintStart_toStartOf="@+id/containerComponents"
+                    app:layout_constraintTop_toTopOf="@+id/containerComponents" />
+
+                <EditText
+                    android:id="@+id/edit_cpf"
+                    style="@style/EditText"
+                    android:hint="000.000.000-20"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+                    app:layout_constraintStart_toStartOf="@+id/containerComponents"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
+
+                <EditText
+                    android:id="@+id/edit_telefone"
+                    style="@style/EditText"
+                    android:drawableEnd="@drawable/ic_whatsapp"
+                    android:hint="(77)77777-7777"
+                    android:inputType="phone"
+                    app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+                    app:layout_constraintStart_toStartOf="@+id/containerComponents"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_cpf" />
+
+                <EditText
+                    android:id="@+id/edit_email"
+                    style="@style/EditText"
+                    android:drawableEnd="@drawable/ic_email"
+                    android:hint="email@email.com"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+                    app:layout_constraintStart_toStartOf="@+id/containerComponents"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_telefone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="45dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btm_editar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:backgroundTint="@color/btn"
+                        android:contentDescription="@string/editar"
+                        android:text="@string/editar"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_edit"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_sair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="@color/red"
+                        android:contentDescription="Sair"
+                        android:text="Sair"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_exit"
+                        app:iconTint="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

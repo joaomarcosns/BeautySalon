@@ -1,0 +1,146 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".empresa.HomeEmpresa"
+    android:background="@color/background">
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+
+    <ImageView
+        android:id="@+id/img_home"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/home" />
+
+    <ImageView
+        android:id="@+id/nav_logo"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/pesquisar"
+        android:src="@drawable/avatar_1"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_actionfooter"
+        app:layout_constraintEnd_toStartOf="@+id/nav_comany"
+        app:layout_constraintStart_toEndOf="@+id/img_home"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nav_comany"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/usuario"
+        android:src="@drawable/ic_comany"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_actionfooter"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_nome_empresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salão do Zé"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        <!--Card favorito -->
+            <View
+                android:id="@+id/card_favorito"
+                style="@style/EditTextHomeEmpresa"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_nome_empresa"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidades de favoritos"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_favorito"
+                app:layout_constraintEnd_toEndOf="@+id/card_favorito"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/card_favorito"
+                app:layout_constraintTop_toTopOf="@+id/card_favorito"
+                app:layout_constraintVertical_bias="0.056" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150"
+                android:textColor="@color/black"
+                android:textSize="100sp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_favorito"
+                app:layout_constraintEnd_toEndOf="@+id/card_favorito"
+                app:layout_constraintStart_toStartOf="@+id/card_favorito"
+                app:layout_constraintTop_toTopOf="@+id/card_favorito" />
+            <!--Card contato -->
+            <View
+                android:id="@+id/card_contato"
+                style="@style/EditTextHomeEmpresa"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_favorito"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidades de Contatos"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_contato"
+                app:layout_constraintEnd_toEndOf="@+id/card_contato"
+                app:layout_constraintStart_toStartOf="@+id/card_contato"
+                app:layout_constraintTop_toTopOf="@+id/card_contato"
+                app:layout_constraintVertical_bias="0.056" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="205"
+                android:textColor="@color/black"
+                android:textSize="100sp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_contato"
+                app:layout_constraintEnd_toEndOf="@+id/card_contato"
+                app:layout_constraintStart_toStartOf="@+id/card_contato"
+                app:layout_constraintTop_toTopOf="@+id/card_contato" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

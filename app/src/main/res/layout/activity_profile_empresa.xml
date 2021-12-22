@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".empresa.ProfileEmpresa"
+    android:background="@color/background">
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <ImageView
+        android:id="@+id/img_home"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/home" />
+
+    <ImageView
+        android:id="@+id/nav_logo"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/pesquisar"
+        android:src="@drawable/avatar_1"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_actionfooter"
+        app:layout_constraintEnd_toStartOf="@+id/nav_comany"
+        app:layout_constraintStart_toEndOf="@+id/img_home"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nav_comany"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/usuario"
+        android:src="@drawable/ic_comany"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="357dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/activity_actionfooter"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/text_meus_dados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Meus Dados"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/containerComponents"
+                style="@style/ContainerComponentsEmpresa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_meus_dados"
+                android:orientation="vertical" >
+                <EditText
+                    android:id="@+id/edit_nome_empresa"
+                    style="@style/EditTextEmpresa"
+                    android:hint="Salão do Ze"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_nome_proetario"
+                    style="@style/EditTextEmpresa"
+                    android:hint="Ze"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_cpf_proetario"
+                    style="@style/EditTextEmpresa"
+                    android:hint="000.000.000-00"
+                    android:inputType="number" />
+                <EditText
+                    style="@style/EditTextEmpresa"
+                    android:hint="Manicure"
+                    android:dropDownWidth="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/edit_descricao"
+                    style="@style/EditTextDescricao"
+                    android:gravity="top|left"
+                    android:hint="asdgasgdhagsdhgashjdghjasgdhjagshjdgashjdghjasgdhjagshjdgashjdgahjsdg"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:scrollHorizontally="false" />
+
+                <EditText
+                    android:id="@+id/edit_telefone"
+                    style="@style/EditTextEmpresa"
+                    android:hint="(77)99999-9999"
+                    android:drawableEnd="@drawable/ic_whatsapp"
+                    android:inputType="phone"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_localizacao"
+                    style="@style/EditTextEmpresa"
+                    android:hint="Igaporã"
+                    android:drawableEnd="@drawable/ic_gps"
+                    android:inputType="text"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_email"
+                    style="@style/EditTextEmpresa"
+                    android:hint="email@email.com"
+                    android:drawableEnd="@drawable/ic_email"
+                    android:inputType="textEmailAddress"
+                    />
+
+                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginBottom="20dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btm_editar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/btn"
+                        app:icon="@drawable/ic_edit"
+                        app:iconTint="@color/white"
+                        android:contentDescription="@string/editar"
+                        android:text="@string/editar"/>
+
+                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                         android:id="@+id/btn_sair"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:layout_gravity="center|end"
+                         android:textColor="@color/white"
+                         android:backgroundTint="@color/red"
+                         app:icon="@drawable/ic_exit"
+                         app:iconTint="@color/white"
+                         android:contentDescription="Sair"
+                         android:text="Sair"/>
+
+                 </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
