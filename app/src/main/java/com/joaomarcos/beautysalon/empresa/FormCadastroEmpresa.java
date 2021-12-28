@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,14 +15,27 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.clientes.HomeCliente;
+import com.joaomarcos.beautysalon.objeto.Categoria;
 import com.joaomarcos.beautysalon.objeto.Empresas;
+
+import java.util.Objects;
 
 public class FormCadastroEmpresa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -72,12 +86,12 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                }else if (!senha.equals(comfirmarSenha)) {
+                } else if (!senha.equals(comfirmarSenha)) {
                     Snackbar snackbar = Snackbar.make(v, "As senhas não batem", Snackbar.LENGTH_LONG);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                }else {
+                } else {
                     cadastrarEmpresa(v);
                 }
             }
@@ -93,24 +107,63 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
 
-        Empresas empresa = new Empresas(nomeEmpresa, nomeProprietario, cpfProprietario, descricao,
-                telefoneEmpresa, categoria);
+        Empresas empresa = new Empresas();
+        empresa.setNomeEmpresa(nomeEmpresa);
+        empresa.setNomeDono(nomeProprietario);
+        empresa.setCpfDono(cpfProprietario);
+        empresa.setTelefone(telefoneEmpresa);
+        empresa.setDescricao(descricao);
+        empresa.setCategoriaPricipal(categoria);
+        empresa.setNivelAcesso(2);
+        Categoria categorias = new Categoria();
 
-        Intent intent = new Intent(this, HomeEmpresa.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        Task<AuthResult> authResultTask = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
+        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = Objects.requireNonNull(authResultTask.getResult()).getUser();
+                    FirebaseFirestore.getInstance().collection("empresa").document(Objects.requireNonNull(user).getUid())
+                            .set(empresa).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Snackbar snackbar = Snackbar.make(v, "Cadastro relaizado com sucesso", Snackbar.LENGTH_LONG);
+                            snackbar.setBackgroundTint(Color.WHITE);
+                            snackbar.setTextColor(Color.BLACK);
+                            snackbar.show();
+
+                            Intent intent = new Intent(getApplicationContext(), HomeEmpresa.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("Teste", e.getMessage());
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Teste", e.getMessage());
+            }
+        });
+
+
 
     }
 
     private void iniciarComponente() {
         edit_nome_empresa = findViewById(R.id.edit_nome_empresa);
         edit_nome_proetario = findViewById(R.id.edit_nome_proetario);
-        edit_cpf_proetario  = findViewById(R.id.edit_cpf_proetario);
-        edit_email  = findViewById(R.id.edit_email);
-        edit_senha  = findViewById(R.id.edit_senha);
-        edit_comfirma_senha  = findViewById(R.id.edit_comfirma_senha);
-        btn_login  = findViewById(R.id.btn_login);
-        progressBar_login  = findViewById(R.id.progressBar_login);
+        edit_cpf_proetario = findViewById(R.id.edit_cpf_proetario);
+        edit_email = findViewById(R.id.edit_email);
+        edit_senha = findViewById(R.id.edit_senha);
+        edit_comfirma_senha = findViewById(R.id.edit_comfirma_senha);
+        btn_login = findViewById(R.id.btn_login);
+        progressBar_login = findViewById(R.id.progressBar_login);
         edit_telefone = findViewById(R.id.edit_telefone);
         edit_descricao = findViewById(R.id.edit_descricao);
         dropdown = findViewById(R.id.spinner1);
@@ -139,7 +192,8 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
             }
         });
     }
-    private void dropdown(){
+
+    private void dropdown() {
         String[] items = new String[]{"Selecione um categoria", "Manicure", "Pedicure", "Cabeleleiro"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_drop_down, items);
         dropdown.setAdapter(adapter);
@@ -150,10 +204,10 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0){
+                if (position != 0) {
                     String item = parent.getItemAtPosition(position).toString();
                     categoria = item;
-                    Toast.makeText(getApplicationContext(), "Item: " +item, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Item: " + item, Toast.LENGTH_SHORT).show();
                 }
             }
 

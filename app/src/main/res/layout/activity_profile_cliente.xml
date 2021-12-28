@@ -97,43 +97,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_meus_dados">
 
-                <EditText
-                    android:id="@+id/edit_nome"
+                <TextView
+                    android:id="@+id/text_nome"
                     style="@style/EditText"
-                    android:hint="JOAO MARCOS"
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
                     app:layout_constraintTop_toTopOf="@+id/containerComponents" />
 
-                <EditText
-                    android:id="@+id/edit_cpf"
+                <TextView
+                    android:id="@+id/text_cpf"
                     style="@style/EditText"
-                    android:hint="000.000.000-20"
-                    android:inputType="number"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
                     app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
-                <EditText
-                    android:id="@+id/edit_telefone"
+                <TextView
+                    android:id="@+id/text_telefone"
                     style="@style/EditText"
-                    android:drawableEnd="@drawable/ic_whatsapp"
-                    android:hint="(77)77777-7777"
-                    android:inputType="phone"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_cpf" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_cpf"
+                    app:drawableEndCompat="@drawable/ic_whatsapp" />
 
-                <EditText
-                    android:id="@+id/edit_email"
+                <TextView
+                    android:id="@+id/text_email"
                     style="@style/EditText"
-                    android:drawableEnd="@drawable/ic_email"
-                    android:hint="email@email.com"
-                    android:inputType="textEmailAddress"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_telefone" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_telefone"
+                    app:drawableEndCompat="@drawable/ic_email" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,8 +156,8 @@
                         android:layout_gravity="center|end"
                         android:layout_marginStart="10dp"
                         android:backgroundTint="@color/red"
-                        android:contentDescription="Sair"
-                        android:text="Sair"
+                        android:contentDescription="@string/sair"
+                        android:text="@string/sair"
                         android:textColor="@color/white"
                         app:icon="@drawable/ic_exit"
                         app:iconTint="@color/white" />

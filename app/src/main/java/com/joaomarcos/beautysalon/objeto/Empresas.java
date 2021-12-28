@@ -1,34 +1,25 @@
 package com.joaomarcos.beautysalon.objeto;
 
 public class Empresas {
-
-    private String id;
     private String nomeEmpresa;
     private String nomeDono;
     private String cpfDono;
     private String descricao;
     private String telefone;
-    private String categoria;
-    private String email;
-    private String senha;
+    private String categoriaPricipal;
+    private Integer nivelAcesso;
 
     public Empresas() {
     }
 
-    public Empresas(String nomeEmpresa, String nomeDono, String cpfDono, String descricao, String telefone, String categoria) {
+    public Empresas(String nomeEmpresa, String nomeDono, String cpfDono, String descricao, String telefone, String categoriaPricipal, Integer nivelAcesso) {
         this.nomeEmpresa = nomeEmpresa;
         this.nomeDono = nomeDono;
         this.cpfDono = cpfDono;
         this.descricao = descricao;
         this.telefone = telefone;
-        this.categoria = categoria;
-    }
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.categoriaPricipal = categoriaPricipal;
+        this.nivelAcesso = nivelAcesso;
     }
 
     public String getNomeEmpresa() {
@@ -71,11 +62,19 @@ public class Empresas {
         this.telefone = telefone;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategoriaPricipal() {
+        return categoriaPricipal;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoriaPricipal(String categoriaPricipal) {
+        this.categoriaPricipal = categoriaPricipal;
+    }
+
+    public Integer getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(Integer nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 }

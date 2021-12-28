@@ -59,46 +59,6 @@ public class HomeCliente extends AppCompatActivity {
     }
 
 
-//    private void favoritar() {
-//        btnLove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast toast = Toast.makeText(getApplicationContext(), "Adicionado ao meus favoritos", Toast.LENGTH_LONG);
-//                toast.show();
-//                Favoritos favoritos = new Favoritos();
-//
-//            }
-//        });
-//    }
-
-//    private void modal() {
-//        buttonShow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-//                        HomeCliente.this, R.style.BottomSheetDialogTheme
-//                );
-//                View bottomSheetView = LayoutInflater.from(getApplicationContext())
-//                        .inflate(
-//                                R.layout.modal_rating,
-//                                (LinearLayout)findViewById(R.id.bootomSheetContainer)
-//                        );
-//                bottomSheetView.findViewById(R.id.btnAvaliar).setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        RatingBar rating_bar_avaliar = v.findViewById(R.id.rating_bar_avaliar);
-//                        Log.i("teste", String.valueOf(rating_bar_avaliar.getRating()));
-//                        Toast.makeText(HomeCliente.this, "Obrigado pelo seu feedback", Toast.LENGTH_SHORT).show();
-//                        bottomSheetDialog.dismiss();
-//                    }
-//                });
-//
-//                bottomSheetDialog.setContentView(bottomSheetView);
-//                bottomSheetDialog.show();
-//            }
-//        });
-//    }
-
     private void InicarComponente() {
         img_perfil = findViewById(R.id.img_user);
         img_search = findViewById(R.id.img_search);
@@ -160,6 +120,48 @@ public class HomeCliente extends AppCompatActivity {
 //                                )
 //                        )
 //                );
+//            }
+//        });
+//    }
+
+//    private void favoritar() {
+//        btnLove.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast toast = Toast.makeText(getApplicationContext(), "Adicionado ao meus favoritos", Toast.LENGTH_LONG);
+//                toast.show();
+//                Favoritos favoritos = new Favoritos();
+//
+//            }
+//        });
+//    }
+
+
+
+//    private void modal() {
+//        buttonShow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+//                        HomeCliente.this, R.style.BottomSheetDialogTheme
+//                );
+//                View bottomSheetView = LayoutInflater.from(getApplicationContext())
+//                        .inflate(
+//                                R.layout.modal_rating,
+//                                (LinearLayout)findViewById(R.id.bootomSheetContainer)
+//                        );
+//                bottomSheetView.findViewById(R.id.btnAvaliar).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        RatingBar rating_bar_avaliar = v.findViewById(R.id.rating_bar_avaliar);
+//                        Log.i("teste", String.valueOf(rating_bar_avaliar.getRating()));
+//                        Toast.makeText(HomeCliente.this, "Obrigado pelo seu feedback", Toast.LENGTH_SHORT).show();
+//                        bottomSheetDialog.dismiss();
+//                    }
+//                });
+//
+//                bottomSheetDialog.setContentView(bottomSheetView);
+//                bottomSheetDialog.show();
 //            }
 //        });
 //    }

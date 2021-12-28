@@ -35,7 +35,7 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
         }

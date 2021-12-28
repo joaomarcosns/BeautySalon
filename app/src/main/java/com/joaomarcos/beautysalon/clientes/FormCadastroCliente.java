@@ -3,17 +3,29 @@ package com.joaomarcos.beautysalon.clientes;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.objeto.Clientes;
+
+import java.util.Objects;
 
 
 public class FormCadastroCliente extends AppCompatActivity {
@@ -25,7 +37,6 @@ public class FormCadastroCliente extends AppCompatActivity {
     private EditText edit_senha;
     private EditText edit_comfirma_senha;
     private Button btn_login;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,16 +106,40 @@ public class FormCadastroCliente extends AppCompatActivity {
         cliente.setCpf(cpf);
         cliente.setTelefone(telefone);
         cliente.setEmail(email);
-        cliente.setSenha(senha);
+        cliente.setNivelAcesso(1);
 
-        Snackbar snackbar = Snackbar.make(v, "Cdastro relaizado com sucesso", Snackbar.LENGTH_LONG);
-        snackbar.setBackgroundTint(Color.WHITE);
-        snackbar.setTextColor(Color.BLACK);
-        snackbar.show();
+        Task<AuthResult> authResultTask = FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, senha);
+        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    FirebaseUser user = Objects.requireNonNull(Objects.requireNonNull(authResultTask.getResult()).getUser());
+                    FirebaseFirestore.getInstance().collection("cliente").document(user.getUid()).set(cliente).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Snackbar snackbar = Snackbar.make(v, "Cadastro relaizado com sucesso", Snackbar.LENGTH_LONG);
+                            snackbar.setBackgroundTint(Color.WHITE);
+                            snackbar.setTextColor(Color.BLACK);
+                            snackbar.show();
 
-        Intent intent = new Intent(this, HomeCliente.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+                            Intent intent = new Intent(getApplicationContext(), HomeCliente.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("Teste", e.getMessage());
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("TESTE", e.getMessage());
+            }
+        });
     }
 
 }

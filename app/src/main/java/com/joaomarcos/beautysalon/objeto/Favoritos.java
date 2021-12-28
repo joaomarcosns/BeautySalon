@@ -1,16 +1,15 @@
 package com.joaomarcos.beautysalon.objeto;
 
 public class Favoritos {
-    private Integer id;
     private Clientes clientes;
     private Empresas empresas;
 
-    public Integer getId() {
-        return id;
+    public Favoritos() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Favoritos(Clientes clientes, Empresas empresas) {
+        this.clientes = clientes;
+        this.empresas = empresas;
     }
 
     public Clientes getClientes() {

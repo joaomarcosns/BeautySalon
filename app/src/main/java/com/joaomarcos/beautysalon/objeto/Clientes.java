@@ -1,20 +1,15 @@
 package com.joaomarcos.beautysalon.objeto;
 
 public class Clientes {
-    private String id;
     private String nome;
     private String cpf;
     private String telefone;
     private String email;
-    private String senha;
+    private Integer nivelAcesso;
 
-    public String getId() {
-        return id;
+    public Clientes() {
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -48,11 +43,11 @@ public class Clientes {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public Integer getNivelAcesso() {
+        return nivelAcesso;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setNivelAcesso(Integer nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 }
