@@ -1,5 +1,6 @@
 package com.joaomarcos.beautysalon.clientes;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,39 +14,38 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.adapter.ListEmpresa;
+import com.joaomarcos.beautysalon.empresa.HomeEmpresa;
 import com.joaomarcos.beautysalon.objeto.Empresas;
 import com.joaomarcos.beautysalon.objeto.Favoritos;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomeCliente extends AppCompatActivity {
 
     private ImageView img_perfil;
     private ImageView img_search;
     private ImageView img_love;
-    private FloatingActionButton buttonShow;
-    private FloatingActionButton btnWhatsapp;
-    private FloatingActionButton btnLove;
-    private RatingBar rating_bar_indicator;
-
-
-    private TextView nome_loja;
-    private TextView tipo_categoria;
-    private TextView descricao;
 
     private RecyclerView recyclerView;
+    FirebaseFirestore db;
     ArrayList<Empresas> empresasArrayList;
     ListEmpresa myAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +53,7 @@ public class HomeCliente extends AppCompatActivity {
         setContentView(R.layout.activity_home_cliente);
         InicarComponente();
         footerNavigation();
-//        entrarEmContato();
-//        favoritar();
+
 
     }
 
@@ -67,14 +66,37 @@ public class HomeCliente extends AppCompatActivity {
 //        btnWhatsapp = findViewById(R.id.btnWhatsapp);
 //        btnLove = findViewById(R.id.btnLove);
 
-        nome_loja = findViewById(R.id.nome_loja);
-        tipo_categoria = findViewById(R.id.tipo_categoria);
-        descricao = findViewById(R.id.descricao);
-
         recyclerView = findViewById(R.id.id_list_item);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        db = FirebaseFirestore.getInstance();
+        empresasArrayList = new ArrayList<Empresas>();
+        myAdapter = new ListEmpresa(HomeCliente.this, empresasArrayList);
         recyclerView.setAdapter(myAdapter);
+        EventChangeListener();
+    }
+
+    private void EventChangeListener() {
+        db.collection("empresa").orderBy("nomeEmpresa", Query.Direction.ASCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.d("Teste", error.getMessage());
+                            return;
+                        }
+
+                        for (DocumentChange doc :  Objects.requireNonNull(value).getDocumentChanges()) {
+                            if (doc.getType() == DocumentChange.Type.ADDED) {
+                                Empresas emp = doc.getDocument().toObject(Empresas.class);
+                                emp.setId(doc.getDocument().getId());
+                                empresasArrayList.add(emp);
+                            }
+                            myAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
     }
 
     private void footerNavigation() {
@@ -102,6 +124,8 @@ public class HomeCliente extends AppCompatActivity {
             }
         });
     }
+
+
 
 //    private void entrarEmContato() {
 //        btnWhatsapp.setOnClickListener(new View.OnClickListener() {

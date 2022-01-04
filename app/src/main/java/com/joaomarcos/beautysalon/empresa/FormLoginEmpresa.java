@@ -61,11 +61,11 @@ public class FormLoginEmpresa extends AppCompatActivity {
             snackbar.setTextColor(Color.BLACK);
             snackbar.show();
         }else {
-            login();
+            login(v);
         }
 }
 
-    private void login() {
+    private void login(View v) {
         String email = edit_email.getText().toString().trim();
         String senha = edit_senha.getText().toString().trim();
 
@@ -83,6 +83,10 @@ public class FormLoginEmpresa extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("Teste", e.getMessage());
+                Snackbar snackbar = Snackbar.make(v, "E-mail ou senha Invalidos", Snackbar.LENGTH_LONG);
+                snackbar.setBackgroundTint(Color.WHITE);
+                snackbar.setTextColor(Color.BLACK);
+                snackbar.show();
             }
         });
     }

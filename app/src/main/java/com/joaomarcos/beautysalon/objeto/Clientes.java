@@ -1,6 +1,10 @@
 package com.joaomarcos.beautysalon.objeto;
 
+import com.google.firebase.firestore.Exclude;
+
 public class Clientes {
+    @Exclude
+    private String id;
     private String nome;
     private String cpf;
     private String telefone;
@@ -10,6 +14,21 @@ public class Clientes {
     public Clientes() {
     }
 
+    public Clientes(String nome, String cpf, String telefone, String email, Integer nivelAcesso) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.nivelAcesso = nivelAcesso;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

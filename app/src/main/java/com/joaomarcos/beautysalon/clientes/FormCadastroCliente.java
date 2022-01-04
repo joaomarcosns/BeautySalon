@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -132,6 +135,24 @@ public class FormCadastroCliente extends AppCompatActivity {
                             Log.d("Teste", e.getMessage());
                         }
                     });
+                }else {
+                    String error = "";
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthWeakPasswordException e) {
+                        error = "A senha deve conter no mínino 6 caracteres";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        error = "A Conta já criada";
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        error = "E-mail inválido";
+                    } catch (Exception e) {
+                        error = "Erro ao Cadastar Cliente";
+                    }
+
+                    Snackbar snackbar = Snackbar.make(v, error, Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

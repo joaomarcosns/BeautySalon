@@ -67,9 +67,10 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="24dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="-145dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -99,54 +100,123 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_search" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/manicure_pedicure"
+                app:layout_constraintBottom_toTopOf="@+id/img_manicure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_categoria" />
+
             <ImageView
                 android:id="@+id/img_manicure"
                 android:layout_width="177dp"
-                android:layout_height="140dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/ic_manicure"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_categoria" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/limpeza_de_pele"
+                app:layout_constraintBottom_toTopOf="@+id/img_manicure"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/textView" />
+
             <ImageView
                 android:id="@+id/img_pedicure"
                 android:layout_width="177dp"
-                android:layout_height="140dp"
-                android:src="@drawable/ic_pedicure"
+                android:layout_height="110dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_limpeza_epele"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.665"
                 app:layout_constraintStart_toEndOf="@+id/img_manicure"
                 app:layout_constraintTop_toBottomOf="@+id/text_categoria" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="@string/cabeleireiro"
+                app:layout_constraintBottom_toTopOf="@+id/img_cabeleireira"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_manicure" />
+
             <ImageView
                 android:id="@+id/img_cabeleireira"
                 android:layout_width="177dp"
                 android:layout_height="140dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/ic_cabeleireira"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_manicure" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="35dp"
+                android:text="Massagem"
+                app:layout_constraintBottom_toTopOf="@+id/img_massagem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/img_pedicure" />
 
             <ImageView
                 android:id="@+id/img_massagem"
                 android:layout_width="177dp"
                 android:layout_height="140dp"
+                android:layout_marginTop="60dp"
                 android:src="@drawable/ic_massagem"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toEndOf="@+id/img_cabeleireira"
                 app:layout_constraintTop_toBottomOf="@+id/img_pedicure" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/maquiadora"
+                app:layout_constraintBottom_toTopOf="@+id/img_maquiagem"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_cabeleireira" />
             <ImageView
                 android:id="@+id/img_maquiagem"
                 android:layout_width="177dp"
                 android:layout_height="140dp"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/ic_maquiadora"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_cabeleireira" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/depiladoras"
+                app:layout_constraintBottom_toTopOf="@+id/img_depilacao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/img_massagem" />
             <ImageView
                 android:id="@+id/img_depilacao"
                 android:layout_width="177dp"
                 android:layout_height="140dp"
+                android:layout_marginTop="35dp"
                 android:src="@drawable/ic_depilacao"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.666"

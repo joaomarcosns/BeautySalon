@@ -39,4 +39,9 @@
     <string name="avaliar">Avaliar Empresa</string>
     <string name="comfirmar_senha">Comfirmar Senha</string>
     <string name="sair">Sair</string>
+    <string name="cabeleireiro">Cabeleireiro</string>
+    <string name="limpeza_de_pele">Limpeza de Pele</string>
+    <string name="manicure_pedicure">Manicure Pedicure</string>
+    <string name="maquiadora">Maquiadora</string>
+    <string name="depiladoras">Depiladoras</string>
 </resources>

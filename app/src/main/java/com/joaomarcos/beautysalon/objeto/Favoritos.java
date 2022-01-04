@@ -1,30 +1,49 @@
 package com.joaomarcos.beautysalon.objeto;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.firestore.Exclude;
+
 public class Favoritos {
-    private Clientes clientes;
-    private Empresas empresas;
+    @Exclude
+    private String id;
+    private String uIdCliente;
+    private String uIdEmpresa;
 
     public Favoritos() {
     }
 
-    public Favoritos(Clientes clientes, Empresas empresas) {
-        this.clientes = clientes;
-        this.empresas = empresas;
+    public String getId() {
+        return id;
     }
 
-    public Clientes getClientes() {
-        return clientes;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setClientes(Clientes clientes) {
-        this.clientes = clientes;
+    public String getuIdCliente() {
+        return uIdCliente;
     }
 
-    public Empresas getEmpresas() {
-        return empresas;
+    public void setuIdCliente(String uIdCliente) {
+        this.uIdCliente = uIdCliente;
     }
 
-    public void setEmpresas(Empresas empresas) {
-        this.empresas = empresas;
+    public String getuIdEmpresa() {
+        return uIdEmpresa;
+    }
+
+    public void setuIdEmpresa(String uIdEmpresa) {
+        this.uIdEmpresa = uIdEmpresa;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Favoritos{" +
+                "id='" + id + '\'' +
+                ", uIdCliente='" + uIdCliente + '\'' +
+                ", uIdEmpresa='" + uIdEmpresa + '\'' +
+                '}';
     }
 }

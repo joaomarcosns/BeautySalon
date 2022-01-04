@@ -1,6 +1,10 @@
 package com.joaomarcos.beautysalon.objeto;
 
+import com.google.firebase.firestore.Exclude;
+
 public class Empresas {
+    @Exclude
+    private String id;
     private String nomeEmpresa;
     private String nomeDono;
     private String cpfDono;
@@ -20,6 +24,14 @@ public class Empresas {
         this.telefone = telefone;
         this.categoriaPricipal = categoriaPricipal;
         this.nivelAcesso = nivelAcesso;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNomeEmpresa() {

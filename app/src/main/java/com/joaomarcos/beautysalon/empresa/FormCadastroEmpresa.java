@@ -27,6 +27,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -123,6 +126,7 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = Objects.requireNonNull(authResultTask.getResult()).getUser();
+                    empresa.setId(user.getUid());
                     FirebaseFirestore.getInstance().collection("empresa").document(Objects.requireNonNull(user).getUid())
                             .set(empresa).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -142,6 +146,23 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
                             Log.d("Teste", e.getMessage());
                         }
                     });
+                } else {
+                    String error = "";
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthWeakPasswordException e) {
+                        error = "A senha deve conter no mínino 6 caracteres";
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        error = "A Conta já criada";
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        error = "E-mail inválido";
+                    } catch (Exception e) {
+                        error = "Erro ao Cadastar Cliente";
+                    }
+                    Snackbar snackbar = Snackbar.make(v, error, Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -194,7 +215,7 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
     }
 
     private void dropdown() {
-        String[] items = new String[]{"Selecione um categoria", "Manicure", "Pedicure", "Cabeleleiro"};
+        String[] items = new String[]{"Selecione um categoria", "Manicure Pedicure", "Depilação", "Maquiagem", "Limpeza de Pele", "Massagem", ""};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_drop_down, items);
         dropdown.setAdapter(adapter);
         adapter.setDropDownViewResource(R.layout.item_drop_down);
