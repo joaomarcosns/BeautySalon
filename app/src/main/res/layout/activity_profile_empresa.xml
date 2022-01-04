@@ -81,67 +81,59 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_meus_dados"
                 android:orientation="vertical" >
-                <EditText
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/avatar_1"
+                    android:layout_gravity="center"/>
+
+                <TextView
                     android:id="@+id/edit_nome_empresa"
                     style="@style/EditTextEmpresa"
-                    android:hint="Salão do Ze"
-                    android:inputType="text"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_nome_proetario"
                     style="@style/EditTextEmpresa"
-                    android:hint="Ze"
-                    android:inputType="text"
                     />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_cpf_proetario"
                     style="@style/EditTextEmpresa"
-                    android:hint="000.000.000-00"
                     android:inputType="number" />
-                <EditText
+                <TextView
                     style="@style/EditTextEmpresa"
                     android:hint="Manicure"
                     android:dropDownWidth="wrap_content"
                     android:spinnerMode="dropdown"
                     android:textColor="@color/black" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_descricao"
-                    style="@style/EditTextDescricao"
+                    style="@style/EditTextEmpresa"
                     android:gravity="top|left"
-                    android:hint="asdgasgdhagsdhgashjdghjasgdhjagshjdgashjdghjasgdhjagshjdgashjdgahjsdg"
-                    android:inputType="textMultiLine"
                     android:lines="6"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
                     android:scrollHorizontally="false" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_telefone"
                     style="@style/EditTextEmpresa"
-                    android:hint="(77)99999-9999"
-                    android:drawableEnd="@drawable/ic_whatsapp"
-                    android:inputType="phone"
-                    />
+                    app:drawableEndCompat="@drawable/ic_whatsapp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_localizacao"
                     style="@style/EditTextEmpresa"
-                    android:hint="Igaporã"
-                    android:drawableEnd="@drawable/ic_gps"
-                    android:inputType="text"
-                    />
+                    app:drawableEndCompat="@drawable/ic_gps" />
 
-                <EditText
+                <TextView
                     android:id="@+id/edit_email"
                     style="@style/EditTextEmpresa"
-                    android:hint="email@email.com"
-                    android:drawableEnd="@drawable/ic_email"
-                    android:inputType="textEmailAddress"
-                    />
+                    app:drawableEndCompat="@drawable/ic_email" />
 
                  <LinearLayout
                     android:layout_width="match_parent"
@@ -168,7 +160,7 @@
                          android:id="@+id/btn_sair"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
-                         android:layout_marginLeft="10dp"
+                         android:layout_marginStart="10dp"
                          android:layout_gravity="center|end"
                          android:textColor="@color/white"
                          android:backgroundTint="@color/red"
