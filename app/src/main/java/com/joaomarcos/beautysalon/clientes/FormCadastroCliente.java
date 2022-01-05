@@ -117,6 +117,7 @@ public class FormCadastroCliente extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     FirebaseUser user = Objects.requireNonNull(Objects.requireNonNull(authResultTask.getResult()).getUser());
+                    cliente.setId(user.getUid());
                     FirebaseFirestore.getInstance().collection("cliente").document(user.getUid()).set(cliente).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -148,7 +149,6 @@ public class FormCadastroCliente extends AppCompatActivity {
                     } catch (Exception e) {
                         error = "Erro ao Cadastar Cliente";
                     }
-
                     Snackbar snackbar = Snackbar.make(v, error, Snackbar.LENGTH_LONG);
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);

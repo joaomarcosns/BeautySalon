@@ -113,6 +113,7 @@ public class FormLoginEmpresa extends AppCompatActivity {
         text_tela_cadastro_empresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Usuário informado pertence a esse Login", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(FormLoginEmpresa.this,
                         FormCadastroEmpresa.class);
                 startActivity(intent);

@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -127,6 +128,7 @@ public class FormLoginCliente extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.get("nivelAcesso") != null) {
+                    Toast.makeText(getApplicationContext(), "Usuário informado pertence a esse Login", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), FormLoginEmpresa.class);
                     startActivity(intent);
                 }
