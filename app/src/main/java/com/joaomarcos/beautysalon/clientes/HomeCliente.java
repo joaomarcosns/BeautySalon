@@ -63,9 +63,6 @@ public class HomeCliente extends AppCompatActivity {
         img_search = findViewById(R.id.img_search);
         img_love = findViewById(R.id.img_love);
 
-//        btnWhatsapp = findViewById(R.id.btnWhatsapp);
-//        btnLove = findViewById(R.id.btnLove);
-
         recyclerView = findViewById(R.id.id_list_item);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

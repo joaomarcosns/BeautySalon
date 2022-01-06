@@ -10,6 +10,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.joaomarcos.beautysalon.R;
+import com.joaomarcos.beautysalon.pesquisa.Cabeleireiro;
+import com.joaomarcos.beautysalon.pesquisa.Depilacao;
+import com.joaomarcos.beautysalon.pesquisa.LimpezaPele;
+import com.joaomarcos.beautysalon.pesquisa.ManicurePedicure;
+import com.joaomarcos.beautysalon.pesquisa.Maquiagem;
+import com.joaomarcos.beautysalon.pesquisa.Massagem;
 
 public class Search extends AppCompatActivity {
 
@@ -79,16 +85,16 @@ public class Search extends AppCompatActivity {
         img_manicure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Search.this, "MANICURE", Toast.LENGTH_SHORT).show();
-                pesquisaManicure();
+                Toast.makeText(Search.this, "Manicure Pedicure", Toast.LENGTH_SHORT).show();
+                pesquisaManicurePedicure();
             }
         });
 
         img_pedicure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Search.this, "PEDICURE", Toast.LENGTH_SHORT).show();
-                pesquisaPedicure();
+                Toast.makeText(Search.this, "Limpeza de Pele", Toast.LENGTH_SHORT).show();
+                pesquisaLimpezaPele();
             }
         });
 
@@ -126,20 +132,26 @@ public class Search extends AppCompatActivity {
     }
 
     private void pesquisaDepilacao() {
+        startActivity(new Intent(getApplicationContext(), Depilacao.class));
     }
 
     private void pesquisaMaquiagem() {
+        startActivity(new Intent(getApplicationContext(), Maquiagem.class));
     }
 
     private void pesquisaMassagem() {
+        startActivity(new Intent(getApplicationContext(), Massagem.class));
     }
 
     private void pesquisaCabeleireira() {
+        startActivity(new Intent(getApplicationContext(), Cabeleireiro.class));
     }
 
-    private void pesquisaPedicure() {
+    private void pesquisaLimpezaPele() {
+        startActivity(new Intent(getApplicationContext(), LimpezaPele.class));
     }
 
-    private void pesquisaManicure() {
+    private void pesquisaManicurePedicure() {
+        startActivity(new Intent(getApplicationContext(), ManicurePedicure.class));
     }
 }

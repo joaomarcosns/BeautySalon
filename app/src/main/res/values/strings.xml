@@ -43,5 +43,7 @@
     <string name="limpeza_de_pele">Limpeza de Pele</string>
     <string name="manicure_pedicure">Manicure Pedicure</string>
     <string name="maquiadora">Maquiadora</string>
-    <string name="depiladoras">Depiladoras</string>
+    <string name="depiladoras">Delipação</string>
+    <string name="carregando">Carregando...</string>
+    <string name="por_favor_aguarde">Por Favor Aguarde</string>
 </resources>

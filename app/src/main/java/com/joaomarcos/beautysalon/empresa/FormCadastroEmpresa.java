@@ -215,7 +215,11 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
     }
 
     private void dropdown() {
-        String[] items = new String[]{"Selecione um categoria", "Manicure Pedicure", "Depilação", "Maquiagem", "Limpeza de Pele", "Massagem", ""};
+        String[] items = new String[]{
+            "Selecione um categoria", "Manicure Pedicure",
+            "Depilação", "Maquiagem", "Limpeza de Pele",
+            "Massagem", "Cabeleireiro"
+        };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.item_drop_down, items);
         dropdown.setAdapter(adapter);
         adapter.setDropDownViewResource(R.layout.item_drop_down);

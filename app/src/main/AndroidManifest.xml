@@ -2,10 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.joaomarcos.beautysalon">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +12,27 @@
         android:roundIcon="@drawable/avatar_1"
         android:supportsRtl="true"
         android:theme="@style/Theme.BeautySalon">
+        <activity
+            android:name=".Loading"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.Maquiagem"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.Depilacao"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.Massagem"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.Cabeleireiro"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.LimpezaPele"
+            android:exported="false" />
+        <activity
+            android:name=".pesquisa.ManicurePedicure"
+            android:exported="false" />
         <activity
             android:name=".clientes.LoveEmpresa"
             android:exported="false" />
