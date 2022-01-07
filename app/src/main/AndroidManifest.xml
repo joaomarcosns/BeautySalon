@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeautySalon">
         <activity
-            android:name=".Loading"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".pesquisa.Maquiagem"
@@ -64,7 +64,7 @@
             android:name=".clientes.FormLoginCliente"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Loading"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

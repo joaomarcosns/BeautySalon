@@ -97,6 +97,7 @@
         style="@style/ProgressBarLogin"
         android:layout_marginTop="4dp"
         android:visibility="invisible"
+        android:indeterminateTint="@color/btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

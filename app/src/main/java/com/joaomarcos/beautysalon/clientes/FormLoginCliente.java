@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class FormLoginCliente extends AppCompatActivity {
     private EditText edit_email;
     private EditText edit_senha;
     private Button btn_entrar;
+    private ProgressBar progressBar_login;
 
 
     @Override
@@ -67,6 +69,7 @@ public class FormLoginCliente extends AppCompatActivity {
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
         btn_entrar = findViewById(R.id.btn_entrar);
+        progressBar_login = findViewById(R.id.progressBar_login);
     }
 
     private void validarCampos(View v) {
@@ -78,6 +81,7 @@ public class FormLoginCliente extends AppCompatActivity {
             snackbar.setTextColor(Color.BLACK);
             snackbar.show();
         } else {
+            progressBar_login.setVisibility(View.VISIBLE);
             login(v);
         }
     }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class FormLoginEmpresa extends AppCompatActivity {
     private EditText edit_senha;
 
     private Button btnLogin;
+    private ProgressBar progressBar_login;
 
 
     @Override
@@ -48,6 +50,7 @@ public class FormLoginEmpresa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validar(v);
+                progressBar_login.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -127,5 +130,6 @@ public class FormLoginEmpresa extends AppCompatActivity {
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
         btnLogin = findViewById(R.id.btnLogin);
+        progressBar_login = findViewById(R.id.progressBar_login);
     }
 }
