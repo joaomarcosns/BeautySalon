@@ -27,6 +27,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaomarcos.beautysalon.R;
+import com.joaomarcos.beautysalon.RedefinirSenhaActivity;
 import com.joaomarcos.beautysalon.empresa.FormLoginEmpresa;
 
 import java.util.Objects;
@@ -34,6 +35,7 @@ import java.util.Objects;
 public class FormLoginCliente extends AppCompatActivity {
 
     private TextView text_tela_cadastro_cliente;
+    private TextView esqueci_a_senha;
     private EditText edit_email;
     private EditText edit_senha;
     private Button btn_entrar;
@@ -45,6 +47,7 @@ public class FormLoginCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_login_cliente);
         InicarComponentes();
+        telaRedefinirSenha();
 
         btn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +66,15 @@ public class FormLoginCliente extends AppCompatActivity {
 
     }
 
+    private void telaRedefinirSenha() {
+        esqueci_a_senha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RedefinirSenhaActivity.class));
+            }
+        });
+    }
+
 
     private void InicarComponentes() {
         text_tela_cadastro_cliente = findViewById(R.id.tela_cadasto_cliente);
@@ -70,6 +82,7 @@ public class FormLoginCliente extends AppCompatActivity {
         edit_senha = findViewById(R.id.edit_senha);
         btn_entrar = findViewById(R.id.btn_entrar);
         progressBar_login = findViewById(R.id.progressBar_login);
+        esqueci_a_senha = findViewById(R.id.esqueci_a_senha);
     }
 
     private void validarCampos(View v) {

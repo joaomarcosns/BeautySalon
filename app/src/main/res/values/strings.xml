@@ -46,4 +46,6 @@
     <string name="depiladoras">Delipação</string>
     <string name="carregando">Carregando...</string>
     <string name="por_favor_aguarde">Por Favor Aguarde</string>
+    <string name="redefinir_senha">Redefinir Senha</string>
+    <string name="redefinir">Redefinir</string>
 </resources>

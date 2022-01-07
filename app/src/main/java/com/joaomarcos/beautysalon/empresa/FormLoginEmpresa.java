@@ -25,14 +25,14 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaomarcos.beautysalon.R;
-import com.joaomarcos.beautysalon.clientes.FormLoginCliente;
-import com.joaomarcos.beautysalon.clientes.HomeCliente;
+import com.joaomarcos.beautysalon.RedefinirSenhaActivity;
 
 import java.util.Objects;
 
 public class FormLoginEmpresa extends AppCompatActivity {
 
     private TextView text_tela_cadastro_empresa;
+    private TextView esqueci_a_senha;
     private EditText edit_email;
     private EditText edit_senha;
 
@@ -46,6 +46,7 @@ public class FormLoginEmpresa extends AppCompatActivity {
         setContentView(R.layout.activity_form_login_empresa);
         InicarComponentes();
         telaCadastro();
+        telaRedefinirSenha();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,18 +56,27 @@ public class FormLoginEmpresa extends AppCompatActivity {
         });
     }
 
+    private void telaRedefinirSenha() {
+        esqueci_a_senha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RedefinirSenhaActivity.class));
+            }
+        });
+    }
+
     private void validar(View v) {
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
-        if (email.isEmpty()|| senha.isEmpty()) {
+        if (email.isEmpty() || senha.isEmpty()) {
             Snackbar snackbar = Snackbar.make(v, "Preencha os campos", Snackbar.LENGTH_LONG);
             snackbar.setBackgroundTint(Color.WHITE);
             snackbar.setTextColor(Color.BLACK);
             snackbar.show();
-        }else {
+        } else {
             login(v);
         }
-}
+    }
 
     private void login(View v) {
         String email = edit_email.getText().toString().trim();
@@ -126,10 +136,11 @@ public class FormLoginEmpresa extends AppCompatActivity {
 
 
     private void InicarComponentes() {
-        text_tela_cadastro_empresa =findViewById(R.id.tela_cadasto_empresa);
+        text_tela_cadastro_empresa = findViewById(R.id.tela_cadasto_empresa);
         edit_email = findViewById(R.id.edit_email);
         edit_senha = findViewById(R.id.edit_senha);
         btnLogin = findViewById(R.id.btnLogin);
         progressBar_login = findViewById(R.id.progressBar_login);
+        esqueci_a_senha = findViewById(R.id.esqueci_a_senha);
     }
 }
