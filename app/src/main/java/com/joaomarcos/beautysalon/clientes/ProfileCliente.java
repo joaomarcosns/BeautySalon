@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,8 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.joaomarcos.beautysalon.MainActivity;
 import com.joaomarcos.beautysalon.R;
-
-import org.w3c.dom.Text;
+import com.joaomarcos.beautysalon.objeto.Clientes;
 
 public class ProfileCliente extends AppCompatActivity {
 
@@ -46,6 +44,34 @@ public class ProfileCliente extends AppCompatActivity {
         inicarComponente();
         footerNavigation();
         deslogar();
+        editar();
+    }
+
+    private void editar() {
+        btn_editar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DocumentReference documentReference = dataBase.collection("cliente").document(uuid);
+                documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                        if (documentReference != null) {
+                            Clientes cliente = new Clientes();
+                            cliente.setId(documentSnapshot.getString("id"));
+                            cliente.setNome(documentSnapshot.getString("nome"));
+                            cliente.setCpf(documentSnapshot.getString("cpf"));
+                            cliente.setTelefone(documentSnapshot.getString("telefone"));
+                            cliente.setEmail(documentSnapshot.getString("email"));
+                            Intent intent = new Intent(getApplicationContext(), AtualizarPerfilClienteActivity.class);
+                            intent.putExtra("cliente", cliente);
+                            startActivity(intent);
+                            System.out.println(cliente.toString());
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void deslogar() {
@@ -72,7 +98,6 @@ public class ProfileCliente extends AppCompatActivity {
 
         btn_sair = findViewById(R.id.btn_sair);
         btn_editar = findViewById(R.id.btm_editar);
-
     }
 
     private void footerNavigation() {
@@ -106,7 +131,6 @@ public class ProfileCliente extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

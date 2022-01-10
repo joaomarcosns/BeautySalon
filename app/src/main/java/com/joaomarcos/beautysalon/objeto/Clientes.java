@@ -1,8 +1,12 @@
 package com.joaomarcos.beautysalon.objeto;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.Exclude;
 
-public class Clientes {
+import java.io.Serializable;
+
+public class Clientes implements Serializable {
     @Exclude
     private String id;
     private String nome;
@@ -68,5 +72,18 @@ public class Clientes {
 
     public void setNivelAcesso(Integer nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Clientes{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                ", nivelAcesso=" + nivelAcesso +
+                '}';
     }
 }

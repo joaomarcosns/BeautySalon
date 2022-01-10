@@ -6,13 +6,14 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/drawable/greenprogress.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_actionbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_actionfooter.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_atualizar_perfil_cliente.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_cabeleireiro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_depilacao.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_cadastro_cliente.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_cadastro_empresa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_login_cliente.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_login_empresa.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_cliente.xml" value="0.2709497206703911" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_cliente.xml" value="0.12" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_empresa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_limpeza_pele.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
