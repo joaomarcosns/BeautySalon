@@ -157,19 +157,6 @@
                         app:iconTint="@color/white" />
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                        android:id="@+id/btn_atualizar_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|end"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginBottom="10dp"
-                        android:backgroundTint="@color/btn"
-                        android:textColor="@color/white"
-                        app:icon="@drawable/ic_email"
-                        android:text="@string/atualizar_e_mail"
-                        app:iconTint="@color/white" />
-
-                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btm_editar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

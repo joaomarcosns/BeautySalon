@@ -54,4 +54,10 @@
     <string name="atualizar_e_mail">Atualizar E-mail</string>
     <string name="alterar_senha">Atualizar Senha </string>
     <string name="apagar_conta">Apagar Conta</string>
+    <string name="redefinir_email">Redefinir Email</string>
+    <string name="novo_e_mail">Novo E-mail</string>
+    <string name="antigo_email">Antigo Email</string>
+    <string name="seu_e_mail">Seu E-mail</string>
+    <string name="senha_antiga">Senha Antiga</string>
+    <string name="nova_senha">Nova Senha</string>
 </resources>

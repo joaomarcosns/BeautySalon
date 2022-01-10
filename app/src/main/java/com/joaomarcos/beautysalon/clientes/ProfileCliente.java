@@ -3,7 +3,6 @@ package com.joaomarcos.beautysalon.clientes;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +13,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.joaomarcos.beautysalon.AlterarSenha;
 import com.joaomarcos.beautysalon.MainActivity;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.objeto.Clientes;
@@ -42,7 +41,7 @@ public class ProfileCliente extends AppCompatActivity {
     private ExtendedFloatingActionButton btn_sair;
     private ExtendedFloatingActionButton btn_editar;
     private ExtendedFloatingActionButton btn_apagar;
-    private ExtendedFloatingActionButton btn_atualizar_email;
+    private ExtendedFloatingActionButton btn_atualizar_senha;
 
     FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
     private String uuid;
@@ -56,11 +55,17 @@ public class ProfileCliente extends AppCompatActivity {
         deslogar();
         editar();
         deletar();
-        alterarEmail();
+        atualizarSenha();
     }
 
-    private void alterarEmail() {
+    private void atualizarSenha() {
+        btn_atualizar_senha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AlterarSenha.class));
 
+            }
+        });
     }
 
     private void deletar() {
@@ -111,6 +116,7 @@ public class ProfileCliente extends AppCompatActivity {
                     }
                 });
             }
+
         });
     }
 
@@ -139,7 +145,7 @@ public class ProfileCliente extends AppCompatActivity {
         btn_sair = findViewById(R.id.btn_sair);
         btn_editar = findViewById(R.id.btm_editar);
         btn_apagar = findViewById(R.id.btn_apagar);
-        btn_atualizar_email = findViewById(R.id.btn_atualizar_email);
+        btn_atualizar_senha = findViewById(R.id.btn_atualizar_senha);
     }
 
     private void footerNavigation() {
