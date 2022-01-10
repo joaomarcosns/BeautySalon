@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/drawable/button.xml" value="0.2611111111111111" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/drawable/button_deletar.xml" value="0.2611111111111111" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/drawable/greenprogress.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_actionbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_actionfooter.xml" value="0.36666666666666664" />
@@ -22,7 +24,7 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_manicure_pedicure.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_maquiagem.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_massagem.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_profile_cliente.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_profile_cliente.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_profile_empresa.xml" value="0.1" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_redefinir_senha.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_search.xml" value="0.2988929889298893" />

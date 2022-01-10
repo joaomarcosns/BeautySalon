@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Meus Dados"
+                android:text="@string/meus_dados"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
@@ -100,9 +100,9 @@
                 <ImageView
                     android:layout_width="150dp"
                     android:layout_height="150dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/avatar_1"
-                    android:layout_gravity="center"/>
+                    android:src="@drawable/avatar_1" />
 
                 <TextView
                     android:id="@+id/text_nome"
@@ -122,18 +122,18 @@
                 <TextView
                     android:id="@+id/text_telefone"
                     style="@style/EditText"
+                    app:drawableEndCompat="@drawable/ic_whatsapp"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_cpf"
-                    app:drawableEndCompat="@drawable/ic_whatsapp" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_cpf" />
 
                 <TextView
                     android:id="@+id/text_email"
                     style="@style/EditText"
+                    app:drawableEndCompat="@drawable/ic_email"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_telefone"
-                    app:drawableEndCompat="@drawable/ic_email" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_telefone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -142,17 +142,43 @@
                     android:layout_marginEnd="45dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="end"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_atualizar_senha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/btn"
+                        android:textColor="@color/white"
+                        android:text="@string/alterar_senha"
+                        app:icon="@drawable/ic_lock"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_atualizar_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/btn"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_email"
+                        android:text="@string/atualizar_e_mail"
+                        app:iconTint="@color/white" />
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btm_editar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/btn"
-                        android:contentDescription="@string/editar"
-                        android:text="@string/editar"
                         android:textColor="@color/white"
+                        android:text="@string/atualizar_perfil"
                         app:icon="@drawable/ic_edit"
                         app:iconTint="@color/white" />
 
@@ -161,12 +187,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginStart="10dp"
-                        android:backgroundTint="@color/red"
-                        android:contentDescription="@string/sair"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/btn"
                         android:text="@string/sair"
                         android:textColor="@color/white"
                         app:icon="@drawable/ic_exit"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_apagar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@color/red"
+                        android:text="@string/apagar_conta"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_delete"
                         app:iconTint="@color/white" />
                 </LinearLayout>
             </LinearLayout>

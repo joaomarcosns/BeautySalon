@@ -1,16 +1,24 @@
 package com.joaomarcos.beautysalon.clientes;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -33,6 +41,8 @@ public class ProfileCliente extends AppCompatActivity {
 
     private ExtendedFloatingActionButton btn_sair;
     private ExtendedFloatingActionButton btn_editar;
+    private ExtendedFloatingActionButton btn_apagar;
+    private ExtendedFloatingActionButton btn_atualizar_email;
 
     FirebaseFirestore dataBase = FirebaseFirestore.getInstance();
     private String uuid;
@@ -45,6 +55,36 @@ public class ProfileCliente extends AppCompatActivity {
         footerNavigation();
         deslogar();
         editar();
+        deletar();
+        alterarEmail();
+    }
+
+    private void alterarEmail() {
+
+    }
+
+    private void deletar() {
+        btn_apagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileCliente.this);
+                builder.setTitle("Atenção");
+                builder.setMessage("Tem certeza que deseja excluir a sua conta?");
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        apagar();
+                    }
+                });
+                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+            }
+        });
     }
 
     private void editar() {
@@ -98,6 +138,8 @@ public class ProfileCliente extends AppCompatActivity {
 
         btn_sair = findViewById(R.id.btn_sair);
         btn_editar = findViewById(R.id.btm_editar);
+        btn_apagar = findViewById(R.id.btn_apagar);
+        btn_atualizar_email = findViewById(R.id.btn_atualizar_email);
     }
 
     private void footerNavigation() {
@@ -124,8 +166,33 @@ public class ProfileCliente extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    private void apagar() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 
+        assert currentUser != null;
+        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    FirebaseFirestore.getInstance().collection("cliente")
+                            .document(currentUser.getUid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                firebaseAuth.signOut();
+                                System.out.println("ok");
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }else System.out.println("Error Colections");
+                        }
+                    });
+                }else System.out.println("Erro usuario");
+            }
+        });
     }
 
     @Override

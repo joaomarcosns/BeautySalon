@@ -49,4 +49,9 @@
     <string name="redefinir_senha">Redefinir Senha</string>
     <string name="redefinir">Redefinir</string>
     <string name="atualizar_perfil">Atualizar Perfil</string>
+    <string name="deletar">Deletar</string>
+    <string name="meus_dados">Meus Dados</string>
+    <string name="atualizar_e_mail">Atualizar E-mail</string>
+    <string name="alterar_senha">Atualizar Senha </string>
+    <string name="apagar_conta">Apagar Conta</string>
 </resources>
