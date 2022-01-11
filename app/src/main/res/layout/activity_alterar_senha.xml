@@ -30,35 +30,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Avatar" />
 
-    <EditText
-        android:id="@+id/editAntigaSenha"
-        style="@style/EditText"
-        android:drawableEnd="@drawable/ic_email"
-        android:hint="@string/senha_antiga"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textRedefinirSenha" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/textRedefinirSenha">
 
-    <EditText
-        android:id="@+id/editNovaSenha"
-        style="@style/EditText"
-        android:drawableEnd="@drawable/ic_email"
-        android:hint="@string/nova_senha"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAntigaSenha" />
+        <EditText
+            android:id="@+id/editAntigaSenha"
+            style="@style/EditText"
+            android:drawableEnd="@drawable/ic_eye"
+            android:hint="@string/senha_antiga"
+            android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/editNovaSenhaConfirma"
-        style="@style/EditText"
-        android:drawableEnd="@drawable/ic_email"
-        android:hint="@string/comfirmar_senha"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editNovaSenha" />
+        <EditText
+            android:id="@+id/editNovaSenha"
+            style="@style/EditText"
+            android:drawableEnd="@drawable/ic_eye"
+            android:hint="@string/nova_senha"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/editNovaSenhaConfirma"
+            style="@style/EditText"
+            android:drawableEnd="@drawable/ic_eye"
+            android:hint="@string/comfirmar_senha"
+            android:inputType="textPassword"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRedefinirSenha"
@@ -67,21 +66,15 @@
             android:textColor="@color/black"
             android:textColorHighlight="@color/black"
             android:textColorHint="@color/black"
-            android:textColorLink="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editNovaSenhaConfirma" />
+            android:textColorLink="@color/black" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRedefinirSenha" />
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

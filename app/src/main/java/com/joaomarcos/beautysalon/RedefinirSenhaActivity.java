@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
 public class RedefinirSenhaActivity extends AppCompatActivity {
@@ -51,13 +50,14 @@ public class RedefinirSenhaActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Um e-mail foi enviado para você," +
                             "para fazer a sua redefinição de senha", Toast.LENGTH_LONG).show();
                     onBackPressed();
+                    finish();
                 } else {
                     String error = "";
                     try {
                         throw task.getException();
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         error = "E-mail inválido";
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         Log.d("Teste", e.getMessage());
                         error = "E-mail não cadastrado";
                     }
