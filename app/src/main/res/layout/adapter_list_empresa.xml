@@ -8,8 +8,8 @@
     <LinearLayout
         android:id="@+id/card"
         style="@style/EditTextEmpresa"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,6 +43,16 @@
                     android:layout_gravity="center|end"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar_indicator"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="3.5"
+                    android:stepSize="0.5"
+                    android:visibility="invisible"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -76,15 +86,16 @@
             android:orientation="horizontal">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnWhatsapp"
+                android:id="@+id/btnAvaliar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:backgroundTint="@color/btnwhatsapp"
+                android:backgroundTint="@color/nav"
                 android:contentDescription="TODO"
-                app:backgroundTint="@color/btnwhatsapp"
-                app:srcCompat="@drawable/ic_whatsapp"
-                app:tint="@color/white" />
+                app:backgroundTint="@color/nav"
+                app:srcCompat="@drawable/ic_star"
+                app:tint="@color/white"
+                android:visibility="invisible"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnLove"
@@ -97,6 +108,19 @@
                 app:backgroundTint="@color/red"
                 app:rippleColor="@color/red"
                 app:srcCompat="@drawable/ic_love"
+                app:tint="@color/white"
+                android:visibility="invisible"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnWhatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginStart="15dp"
+                android:backgroundTint="@color/btnwhatsapp"
+                android:contentDescription="TODO"
+                app:backgroundTint="@color/btnwhatsapp"
+                app:srcCompat="@drawable/ic_whatsapp"
                 app:tint="@color/white" />
 
         </LinearLayout>

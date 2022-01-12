@@ -75,16 +75,6 @@
             android:gravity="end"
             android:orientation="horizontal">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnWhatsapp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
-                android:backgroundTint="@color/btnwhatsapp"
-                android:contentDescription="TODO"
-                app:backgroundTint="@color/btnwhatsapp"
-                app:srcCompat="@drawable/ic_whatsapp"
-                app:tint="@color/white" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnLove"
@@ -97,6 +87,18 @@
                 app:backgroundTint="@color/red"
                 app:rippleColor="@color/red"
                 app:srcCompat="@drawable/ic_love"
+                app:tint="@color/white"
+                android:visibility="invisible"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnWhatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:backgroundTint="@color/btnwhatsapp"
+                android:contentDescription="TODO"
+                app:backgroundTint="@color/btnwhatsapp"
+                app:srcCompat="@drawable/ic_whatsapp"
                 app:tint="@color/white" />
 
         </LinearLayout>

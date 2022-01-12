@@ -28,13 +28,14 @@ import java.util.List;
 
 public class LisFavoritos extends RecyclerView.Adapter<LisFavoritos.MyViewHolder> {
     Context context;
-    ArrayList<Favoritos> favoritosArrayList;
-    ArrayList<Empresas> empresasArrayList = new ArrayList<Empresas>();
+    List<Favoritos> favoritosArrayList;
+    List<Empresas> empresasArrayList;
     Favoritos favoritos;
 
-    public LisFavoritos(Context context, ArrayList<Favoritos> favoritosArrayList) {
+    public LisFavoritos(Context context, List<Favoritos> favoritosArrayList, List<Empresas> empresasArrayList) {
         this.context = context;
         this.favoritosArrayList = favoritosArrayList;
+        this.empresasArrayList = empresasArrayList;
     }
 
     @NonNull
@@ -47,8 +48,8 @@ public class LisFavoritos extends RecyclerView.Adapter<LisFavoritos.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull LisFavoritos.MyViewHolder holder, int position) {
         Favoritos fov = favoritosArrayList.get(position);
-
-        System.out.println(empresasArrayList);
+//        Empresas emp = empresasArrayList.get(position);
+//        System.out.println(fov);
 
     }
 

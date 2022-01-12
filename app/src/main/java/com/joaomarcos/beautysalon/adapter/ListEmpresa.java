@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +17,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.clientes.HomeCliente;
+import com.joaomarcos.beautysalon.objeto.Avaliacao;
 import com.joaomarcos.beautysalon.objeto.Empresas;
 import com.joaomarcos.beautysalon.objeto.Favoritos;
 
@@ -67,7 +73,8 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView nome_loja, tipo_categoria, descricao;
-        private FloatingActionButton btnWhatsapp, btnLove;
+        private FloatingActionButton btnWhatsapp, btnLove, btnAvaliar;
+        private RatingBar rating_bar_indicator;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             nome_loja = itemView.findViewById(R.id.nome_loja);
@@ -75,7 +82,8 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
             descricao = itemView.findViewById(R.id.descricao);
             btnWhatsapp = itemView.findViewById(R.id.btnWhatsapp);
             btnLove = itemView.findViewById(R.id.btnLove);
-
+            btnAvaliar = itemView.findViewById(R.id.btnAvaliar);
+            rating_bar_indicator = itemView.findViewById(R.id.rating_bar_indicator);
 
             btnWhatsapp.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +123,42 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
                             Log.d("Teste", e.getMessage());
                         }
                     });
+                }
+            });
+
+            // Avaliar empresa
+            btnAvaliar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                    bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog);
+                    bottomSheetDialog.setCanceledOnTouchOutside(false);
+                    RatingBar rating_bar_avaliar = bottomSheetDialog.findViewById(R.id.rating_bar_avaliar);
+                    Button btnAvaliarSubmit = bottomSheetDialog.findViewById(R.id.btnAvaliarSubmit);
+
+                    assert btnAvaliarSubmit != null;
+                    btnAvaliarSubmit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            assert rating_bar_avaliar != null;
+                            empresas = empresasArrayList.get(getAdapterPosition());
+                            Avaliacao avaliacao = new Avaliacao();
+                            avaliacao.setEmpresas(empresas);
+                            avaliacao.setAvalicao(rating_bar_avaliar.getRating());
+
+                            FirebaseFirestore.getInstance().collection("avaliacao")
+                                    .add(avaliacao)
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(context, "AAAAAa", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+                    bottomSheetDialog.show();
                 }
             });
         }

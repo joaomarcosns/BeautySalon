@@ -1,10 +1,13 @@
 package com.joaomarcos.beautysalon.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,6 +60,21 @@ public class ListDepilacao extends RecyclerView.Adapter<ListDepilacao.MyViewHold
             descricao = itemView.findViewById(R.id.descricao);
             btnWhatsapp = itemView.findViewById(R.id.btnWhatsapp);
             btnLove = itemView.findViewById(R.id.btnLove);
+
+            btnWhatsapp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    empresas = empresasArrayList.get(getAdapterPosition());
+                    String telefone = "+55" + empresas.getTelefone();
+                    String message = "Olá, vim pelo BEAUTY SALON";
+                    Toast.makeText(context, "Abrindo o whatsapp", Toast.LENGTH_SHORT).show();
+                    context.startActivity( new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse(String.format("https://api.whatsapp.com/send?phone=%s&text=%s", telefone, message)
+                                    )
+                            )
+                    );
+                }
+            });
         }
     }
 }

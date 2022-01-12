@@ -96,6 +96,10 @@ public class AlterarSenha extends AppCompatActivity {
                     });
                 } else {
                     System.out.println("Error auth failed");
+                    Snackbar snackbar = Snackbar.make(v, "Essa não é a sua antiga senha", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
                 }
             }
         });

@@ -1,25 +1,22 @@
 package com.joaomarcos.beautysalon.clientes;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.adapter.LisFavoritos;
@@ -27,8 +24,7 @@ import com.joaomarcos.beautysalon.objeto.Empresas;
 import com.joaomarcos.beautysalon.objeto.Favoritos;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class LoveEmpresa extends AppCompatActivity {
@@ -38,12 +34,10 @@ public class LoveEmpresa extends AppCompatActivity {
     private ImageView img_search;
 
     private RecyclerView recyclerView;
-    ArrayList<Favoritos> favoritosArrayList;
-    ArrayList<Empresas> empresasArrayList;
+    List<Favoritos> favoritosArrayList = new ArrayList<>();
+    List<Empresas> empresasArrayList = new ArrayList<>();
     LisFavoritos myAdapter;
     FirebaseFirestore db;
-
-
 
 
     @Override
@@ -66,37 +60,32 @@ public class LoveEmpresa extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseFirestore.getInstance();
-        favoritosArrayList = new ArrayList<Favoritos>();
-        empresasArrayList = new ArrayList<Empresas>();
-        myAdapter = new LisFavoritos(LoveEmpresa.this, favoritosArrayList);
+        myAdapter = new LisFavoritos(LoveEmpresa.this, favoritosArrayList, empresasArrayList);
 
         recyclerView.setAdapter(myAdapter);
-//        EventChangeListener();
 
     }
 
-    private  void EventChangeListener() {
+    private void EventChangeListener() {
         String clienteLogado = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-        db.collection("favoritos").whereEqualTo("uIdCliente", clienteLogado).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    Log.d("Teste", error.getMessage());
-                }
+        db.collection("favoritos")
+                .whereEqualTo("uIdCliente", clienteLogado)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.d("Teste", error.getMessage());
+                        }
 
-                for (DocumentChange doc: value.getDocumentChanges()) {
-                    if (doc.getType() == DocumentChange.Type.ADDED) {
-                        Favoritos fav = new Favoritos();
-                        fav.setId(doc.getDocument().getId());
-                        fav.setuIdCliente(doc.getDocument().getString("uIdCliente"));
-                        fav.setuIdEmpresa(doc.getDocument().getString("uIdEmpresa"));
-                        favoritosArrayList.add(fav);
-                    }
-
-
-                    db.collection("empresa")
-                            .whereEqualTo("id",doc.getDocument().getString("uIdEmpresa"))
-                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        for (DocumentChange doc : value.getDocumentChanges()) {
+                            if (doc.getType() == DocumentChange.Type.ADDED) {
+                                Favoritos fav = doc.getDocument().toObject(Favoritos.class);
+                                fav.setId(doc.getDocument().getId());
+                                favoritosArrayList.add(fav);
+                            }
+                            String uuidEmpresa = doc.getDocument().getString("uIdEmpresa");
+                            Query query = db.collection("empresa").whereEqualTo("id", uuidEmpresa);
+                            query.addSnapshotListener(new EventListener<QuerySnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                                     if (error != null) {
@@ -105,17 +94,20 @@ public class LoveEmpresa extends AppCompatActivity {
 
                                     for (DocumentChange documentChange : value.getDocumentChanges()) {
                                         if (documentChange.getType() == DocumentChange.Type.ADDED) {
-                                            Empresas empresas = new Empresas();
+                                            Empresas empresas = documentChange.getDocument().toObject(Empresas.class);
                                             empresas.setId(documentChange.getDocument().getId());
+                                            System.out.println(empresasArrayList);
                                             empresasArrayList.add(empresas);
                                         }
                                     }
                                 }
                             });
-                    myAdapter.notifyDataSetChanged();
-                }
-            }
-        });
+                            System.out.println(favoritosArrayList);
+                            System.out.println(empresasArrayList);
+                            myAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
     }
 
     private void footNavigation() {

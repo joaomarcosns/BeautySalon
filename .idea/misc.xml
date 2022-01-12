@@ -21,7 +21,7 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_empresa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_limpeza_pele.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_love_empresa.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_love_empresa.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_manicure_pedicure.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_maquiagem.xml" value="0.25416666666666665" />
@@ -32,6 +32,7 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_search.xml" value="0.2988929889298893" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/adapter_list_empresa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/adapter_list_favoritos.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/item_drop_down.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/modal_rating.xml" value="0.36666666666666664" />
       </map>
