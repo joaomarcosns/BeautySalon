@@ -2,7 +2,9 @@ package com.joaomarcos.beautysalon.objeto;
 
 import com.google.firebase.firestore.Exclude;
 
-public class Empresas {
+import java.io.Serializable;
+
+public class Empresas implements Serializable {
     @Exclude
     private String id;
     private String nomeEmpresa;
@@ -88,5 +90,19 @@ public class Empresas {
 
     public void setNivelAcesso(Integer nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
+    }
+
+    @Override
+    public String toString() {
+        return "Empresas{" +
+                "id='" + id + '\'' +
+                ", nomeEmpresa='" + nomeEmpresa + '\'' +
+                ", nomeDono='" + nomeDono + '\'' +
+                ", cpfDono='" + cpfDono + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", categoriaPricipal='" + categoriaPricipal + '\'' +
+                ", nivelAcesso=" + nivelAcesso +
+                '}';
     }
 }

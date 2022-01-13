@@ -137,17 +137,30 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="end"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_atualizar_senha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/btn"
+                        android:textColor="@color/white"
+                        android:text="@string/alterar_senha"
+                        app:icon="@drawable/ic_lock"
+                        app:iconTint="@color/white" />
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btm_editar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/btn"
-                        android:contentDescription="@string/editar"
-                        android:text="@string/editar"
                         android:textColor="@color/white"
+                        android:text="@string/atualizar_perfil"
                         app:icon="@drawable/ic_edit"
                         app:iconTint="@color/white" />
 
@@ -156,12 +169,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginStart="10dp"
-                        android:backgroundTint="@color/red"
-                        android:contentDescription="Sair"
-                        android:text="Sair"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/btn"
+                        android:text="@string/sair"
                         android:textColor="@color/white"
                         app:icon="@drawable/ic_exit"
+                        app:iconTint="@color/white" />
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/btn_apagar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@color/red"
+                        android:text="@string/apagar_conta"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_delete"
                         app:iconTint="@color/white" />
 
                 </LinearLayout>

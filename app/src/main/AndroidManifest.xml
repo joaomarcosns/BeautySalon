@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeautySalon">
         <activity
+            android:name=".empresa.AtualizarPerfilEmpresa"
+            android:exported="false" />
+        <activity
             android:name=".AlterarSenha"
             android:exported="false" />
         <activity
