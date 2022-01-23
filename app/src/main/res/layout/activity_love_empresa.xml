@@ -88,11 +88,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="16dp"
                 android:text="Ainda em Desenvolvimento"
                 android:textSize="30sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/idRecyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />

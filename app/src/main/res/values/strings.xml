@@ -62,4 +62,6 @@
     <string name="nova_senha">Nova Senha</string>
     <string name="dessa_maneira_que_aparece_a_sua_empesa">É dessa maneira que aparece a sua empesa</string>
     <string name="para_os_clientes">Para os clientes</string>
+    <string name="categoria_principal">Categoria Principal</string>
+    <string name="telefone">Telefone</string>
 </resources>

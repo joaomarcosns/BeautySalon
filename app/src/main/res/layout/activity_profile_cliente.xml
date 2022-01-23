@@ -105,31 +105,71 @@
                     android:src="@drawable/avatar_1" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/nome_completo"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/text_nome"
-                    style="@style/EditText"
+                    style="@style/EditTextEmpresa"
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
                     app:layout_constraintTop_toTopOf="@+id/containerComponents" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/cpf"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/text_cpf"
-                    style="@style/EditText"
+                    style="@style/EditTextEmpresa"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
                     app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/telefone"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/text_telefone"
-                    style="@style/EditText"
+                    style="@style/EditTextEmpresa"
                     app:drawableEndCompat="@drawable/ic_whatsapp"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
                     app:layout_constraintTop_toBottomOf="@+id/edit_cpf" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/text_email"
-                    style="@style/EditText"
+                    style="@style/EditTextEmpresa"
                     app:drawableEndCompat="@drawable/ic_email"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
@@ -139,17 +179,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="45dp"
                     android:layout_marginBottom="20dp"
                     android:gravity="end"
                     android:orientation="vertical">
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_atualizar_senha"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center|end"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/btn"
                         android:textColor="@color/white"
                         android:text="@string/alterar_senha"
@@ -158,11 +198,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btm_editar"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginStart="15dp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/btn"
                         android:textColor="@color/white"
                         android:text="@string/atualizar_perfil"
@@ -171,11 +212,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_sair"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginStart="15dp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/btn"
                         android:text="@string/sair"
                         android:textColor="@color/white"
@@ -184,10 +226,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_apagar"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginStart="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/red"
                         android:text="@string/apagar_conta"
                         android:textColor="@color/white"
