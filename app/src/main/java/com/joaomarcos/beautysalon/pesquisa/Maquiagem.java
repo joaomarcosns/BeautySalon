@@ -17,7 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
-import com.joaomarcos.beautysalon.Vazio;
 import com.joaomarcos.beautysalon.adapter.LisManicurePedicure;
 import com.joaomarcos.beautysalon.adapter.ListMaquiagem;
 import com.joaomarcos.beautysalon.objeto.Empresas;
