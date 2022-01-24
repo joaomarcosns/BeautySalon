@@ -208,7 +208,7 @@ public class ProfileEmpresa extends AppCompatActivity {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentReference != null) {
+                if (documentSnapshot != null) {
                     text_nome_empresa.setText(documentSnapshot.getString("nomeEmpresa"));
                     text_nome_proetario.setText(documentSnapshot.getString("nomeDono"));
                     text_cpf_proetario.setText(documentSnapshot.getString("cpfDono"));

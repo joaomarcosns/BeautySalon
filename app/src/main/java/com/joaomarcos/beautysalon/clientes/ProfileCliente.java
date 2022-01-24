@@ -211,7 +211,7 @@ public class ProfileCliente extends AppCompatActivity {
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                if (documentReference != null) {
+                if (documentSnapshot != null) {
                     text_nome.setText(documentSnapshot.getString("nome"));
                     text_cpf.setText(documentSnapshot.getString("cpf"));
                     text_telefone.setText(documentSnapshot.getString("telefone"));
