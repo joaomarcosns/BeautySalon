@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -14,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
+import com.joaomarcos.beautysalon.Vazio;
 import com.joaomarcos.beautysalon.adapter.LisManicurePedicure;
 import com.joaomarcos.beautysalon.adapter.ListCabeleireiro;
 import com.joaomarcos.beautysalon.adapter.ListLimpezaPele;
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 
 public class Cabeleireiro extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private LinearLayout vazio;
     ArrayList<Empresas> empresasArrayList;
     ListCabeleireiro listCabeleireiro;
     @Override
@@ -39,8 +44,11 @@ public class Cabeleireiro extends AppCompatActivity {
                             Log.d("Teste", error.getMessage());
                             return;
                         }
-
                         assert value != null;
+                        if (value.isEmpty()) {
+                            recyclerView.setVisibility(View.GONE);
+                            vazio.setVisibility(View.VISIBLE);
+                        }
                         for (DocumentChange doc : value.getDocumentChanges()) {
                             if (doc.getType() == DocumentChange.Type.ADDED) {
                                 Empresas empresas  = doc.getDocument().toObject(Empresas.class);
@@ -62,6 +70,10 @@ public class Cabeleireiro extends AppCompatActivity {
         empresasArrayList = new ArrayList<Empresas>();
         listCabeleireiro = new ListCabeleireiro(Cabeleireiro.this, empresasArrayList);
         recyclerView.setAdapter(listCabeleireiro);
+
+        vazio = findViewById(R.id.vazio);
+
+
 
     }
 }

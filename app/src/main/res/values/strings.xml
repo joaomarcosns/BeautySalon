@@ -64,4 +64,5 @@
     <string name="para_os_clientes">Para os clientes</string>
     <string name="categoria_principal">Categoria Principal</string>
     <string name="telefone">Telefone</string>
+    <string name="sem_resultado_entrado">Sem Resultado Entrado</string>
 </resources>

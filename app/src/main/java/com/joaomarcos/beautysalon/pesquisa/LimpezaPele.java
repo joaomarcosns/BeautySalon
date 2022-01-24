@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -14,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
+import com.joaomarcos.beautysalon.Vazio;
 import com.joaomarcos.beautysalon.adapter.LisManicurePedicure;
 import com.joaomarcos.beautysalon.adapter.ListLimpezaPele;
 import com.joaomarcos.beautysalon.objeto.Empresas;
@@ -22,6 +26,7 @@ import java.util.ArrayList;
 
 public class LimpezaPele extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private LinearLayout vazio;
     ArrayList<Empresas> empresasArrayList;
     ListLimpezaPele limpezaPele;
     @Override
@@ -40,6 +45,10 @@ public class LimpezaPele extends AppCompatActivity {
                         }
 
                         assert value != null;
+                        if (value.isEmpty()) {
+                            recyclerView.setVisibility(View.GONE);
+                            vazio.setVisibility(View.VISIBLE);
+                        }
                         for (DocumentChange doc : value.getDocumentChanges()) {
                             if (doc.getType() == DocumentChange.Type.ADDED) {
                                 Empresas empresas  = doc.getDocument().toObject(Empresas.class);
@@ -60,6 +69,6 @@ public class LimpezaPele extends AppCompatActivity {
         empresasArrayList = new ArrayList<Empresas>();
         limpezaPele = new ListLimpezaPele(LimpezaPele.this, empresasArrayList);
         recyclerView.setAdapter(limpezaPele);
-
+        vazio = findViewById(R.id.vazio);
     }
 }

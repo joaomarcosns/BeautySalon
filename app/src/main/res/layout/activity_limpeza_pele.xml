@@ -12,4 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+
+    <LinearLayout
+        android:id="@+id/vazio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:src="@drawable/avatar_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sem_resultado_entrado"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="30sp"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
