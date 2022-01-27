@@ -10,17 +10,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
+import com.joaomarcos.beautysalon.objeto.Categoria;
 
 public class HomeEmpresa extends AppCompatActivity {
 
-    private ImageView img_comany;
+    private ImageView img_comany, nav_logo;
     private TextView nome_loja, tipo_categoria, descricao, text_nome_empresa;
     private FloatingActionButton btnWhatsapp, btnLove, btnAvaliar;
 
@@ -42,9 +44,10 @@ public class HomeEmpresa extends AppCompatActivity {
         btnWhatsapp = findViewById(R.id.btnWhatsapp);
         btnLove = findViewById(R.id.btnLove);
         btnAvaliar = findViewById(R.id.btnAvaliar);
+        nav_logo = findViewById(R.id.nav_logo);
     }
 
-    private void footerNavigation(){
+    private void footerNavigation() {
         img_comany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,11 +55,19 @@ public class HomeEmpresa extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        nav_logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListarCategoria.class));
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        String nome, descricaos;
+        StringBuilder categorias = new StringBuilder();
 
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -73,5 +84,26 @@ public class HomeEmpresa extends AppCompatActivity {
                         }
                     }
                 });
+
+        FirebaseFirestore.getInstance().collection("categoria")
+                .whereEqualTo("uidEmpresa", uid)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (value != null) {
+                            for (DocumentChange doc : value.getDocumentChanges()) {
+                                if (doc.getType() == DocumentChange.Type.ADDED) {
+                                    Categoria cat = doc.getDocument().toObject(Categoria.class);
+                                    categorias.append(tipo_categoria.getText().toString())
+                                            .append(", ")
+                                            .append(cat.getNome())
+                                            .append(", ");
+                                }
+                            }
+                            tipo_categoria.setText(categorias);
+                        }
+                    }
+                });
+
     }
 }

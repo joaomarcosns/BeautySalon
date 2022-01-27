@@ -1,26 +1,17 @@
 package com.joaomarcos.beautysalon.clientes;
 
-import android.app.ListActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RatingBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,9 +20,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.adapter.ListEmpresa;
-import com.joaomarcos.beautysalon.empresa.HomeEmpresa;
+import com.joaomarcos.beautysalon.objeto.Categoria;
 import com.joaomarcos.beautysalon.objeto.Empresas;
-import com.joaomarcos.beautysalon.objeto.Favoritos;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -45,6 +35,7 @@ public class HomeCliente extends AppCompatActivity {
     private RecyclerView recyclerView;
     FirebaseFirestore db;
     ArrayList<Empresas> empresasArrayList;
+    ArrayList<Categoria> categoriaArrayList;
     ListEmpresa myAdapter;
 
     @Override
@@ -53,7 +44,7 @@ public class HomeCliente extends AppCompatActivity {
         setContentView(R.layout.activity_home_cliente);
         InicarComponente();
         footerNavigation();
-
+        EventChangeListener();
 
     }
 
@@ -69,9 +60,10 @@ public class HomeCliente extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         empresasArrayList = new ArrayList<Empresas>();
-        myAdapter = new ListEmpresa(HomeCliente.this, empresasArrayList);
+        categoriaArrayList = new ArrayList<Categoria>();
+        myAdapter = new ListEmpresa(HomeCliente.this, empresasArrayList, categoriaArrayList);
         recyclerView.setAdapter(myAdapter);
-        EventChangeListener();
+
     }
 
     private void EventChangeListener() {
@@ -84,13 +76,41 @@ public class HomeCliente extends AppCompatActivity {
                             return;
                         }
 
-                        for (DocumentChange doc :  Objects.requireNonNull(value).getDocumentChanges()) {
-                            if (doc.getType() == DocumentChange.Type.ADDED) {
-                                Empresas emp = doc.getDocument().toObject(Empresas.class);
-                                emp.setId(doc.getDocument().getId());
+                        for (DocumentChange docEmpresa : Objects.requireNonNull(value).getDocumentChanges()) {
+                            if (docEmpresa.getType() == DocumentChange.Type.ADDED) {
+                                Empresas emp = docEmpresa.getDocument().toObject(Empresas.class);
+                                emp.setId(docEmpresa.getDocument().getId());
                                 empresasArrayList.add(emp);
+
                             }
-                            myAdapter.notifyDataSetChanged();
+                            String uuidEmpresa = docEmpresa.getDocument().getId();
+                            Query diciplinasQuery = db.collection("categoria")
+                                    .whereEqualTo("uidEmpresa", uuidEmpresa);
+
+                            diciplinasQuery.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @SuppressLint("NotifyDataSetChanged")
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if (error != null) {
+                                        System.out.println("Error");
+                                        return;
+                                    }
+
+                                    assert value != null;
+                
+                                    for (DocumentChange categoriasDc : value.getDocumentChanges()) {
+                                        if (categoriasDc.getType() == DocumentChange.Type.ADDED) {
+                                            Categoria cat = categoriasDc.getDocument().toObject(Categoria.class);
+                                            cat.setId(categoriasDc.getDocument().getId());
+                                            categoriaArrayList.add(cat);
+                                            System.out.println(cat.toString());
+                                        }
+
+                                        myAdapter.notifyDataSetChanged();
+                                    }
+
+                                }
+                            });
                         }
                     }
                 });
@@ -121,7 +141,6 @@ public class HomeCliente extends AppCompatActivity {
             }
         });
     }
-
 
 
 //    private void entrarEmContato() {
@@ -156,7 +175,6 @@ public class HomeCliente extends AppCompatActivity {
 //            }
 //        });
 //    }
-
 
 
 //    private void modal() {

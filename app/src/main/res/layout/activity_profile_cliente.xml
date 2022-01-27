@@ -120,7 +120,8 @@
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="@+id/containerComponents"
                     app:layout_constraintStart_toStartOf="@+id/containerComponents"
-                    app:layout_constraintTop_toTopOf="@+id/containerComponents" />
+                    app:layout_constraintTop_toTopOf="@+id/containerComponents"
+                    tools:ignore="TextViewEdits" />
 
                 <TextView
                     android:layout_width="wrap_content"

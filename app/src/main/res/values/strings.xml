@@ -65,4 +65,6 @@
     <string name="categoria_principal">Categoria Principal</string>
     <string name="telefone">Telefone</string>
     <string name="sem_resultado_entrado">Sem Resultado Entrado</string>
+    <string name="categorias_adicionais">Categorias Adicionais</string>
+    <string name="categoria_s">Categoria(s)</string>
 </resources>

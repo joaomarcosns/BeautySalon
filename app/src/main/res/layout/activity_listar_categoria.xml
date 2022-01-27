@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".empresa.ListarCategoria"
+    android:background="@color/background">
+
+    <include
+        android:id="@+id/activity_actionfooter"
+        layout="@layout/activity_actionfooter"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <ImageView
+        android:id="@+id/img_home"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/home" />
+
+    <ImageView
+        android:id="@+id/nav_logo"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/pesquisar"
+        android:src="@drawable/avatar_1"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_actionfooter"
+        app:layout_constraintEnd_toStartOf="@+id/nav_comany"
+        app:layout_constraintStart_toEndOf="@+id/img_home"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nav_comany"
+        android:layout_width="34dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/usuario"
+        android:src="@drawable/ic_comany"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/categorias_adicionais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/vazio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:src="@drawable/avatar_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sem_resultado_entrado"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="50dp"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:backgroundTint="@color/nav"
+        android:contentDescription="TODO"
+        app:backgroundTint="@color/nav"
+        app:layout_constraintBottom_toTopOf="@+id/nav_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/white"
+        tools:layout_editor_absoluteX="276dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

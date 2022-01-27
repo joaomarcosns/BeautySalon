@@ -23,12 +23,12 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.objeto.Clientes;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class FormCadastroCliente extends AppCompatActivity {
@@ -90,7 +90,13 @@ public class FormCadastroCliente extends AppCompatActivity {
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                }else {
+                }else if(validarCpf(cpf)) {
+                    Snackbar snackbar = Snackbar.make(v, "Essa conta ja existe", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                }
+                else {
                     cadastrarCliente(v);
                 }
             }
@@ -161,6 +167,18 @@ public class FormCadastroCliente extends AppCompatActivity {
                 Log.d("TESTE", e.getMessage());
             }
         });
+    }
+
+    public boolean validarCpf(String cpf) {
+        final boolean[] valido = {false};
+        FirebaseFirestore.getInstance().collection("cliente")
+                .whereEqualTo("cpf", cpf)
+                .addSnapshotListener((value, error) -> {
+                    if (value != null && value.getDocuments().size() > 0) {
+                        valido[0] = false;
+                    }
+                });
+        return valido[0];
     }
 
 }

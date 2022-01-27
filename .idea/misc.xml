@@ -12,7 +12,8 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_alterar_senha.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_atualizar_perfil_cliente.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_atualizar_perfil_empresa.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_cabeleireiro.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_cabeleireiro.xml" value="0.1" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_cadastar_categoria.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_depilacao.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_cadastro_cliente.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_form_cadastro_empresa.xml" value="0.36666666666666664" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_cliente.xml" value="0.12" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_home_empresa.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_limpeza_pele.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_listar_categoria.xml" value="0.33" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_loading.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_love_empresa.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
@@ -34,6 +36,7 @@
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/activity_vazio.xml" value="0.3296296296296296" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/adapter_list_empresa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/adapter_list_favoritos.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/adapter_listagemdecategorias.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.264" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/item_drop_down.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/JOAO/AndroidStudioProjects/BeautySalon2/app/src/main/res/layout/modal_rating.xml" value="0.36666666666666664" />

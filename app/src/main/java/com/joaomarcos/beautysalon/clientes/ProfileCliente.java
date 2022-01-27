@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -177,26 +178,29 @@ public class ProfileCliente extends AppCompatActivity {
     private void apagar() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
         assert currentUser != null;
+        String id = currentUser.getUid();
         currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
+                    firebaseAuth.signOut();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                     FirebaseFirestore.getInstance().collection("cliente")
-                            .document(currentUser.getUid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                firebaseAuth.signOut();
-                                System.out.println("ok");
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }else System.out.println("Error Colections");
-                        }
-                    });
-                }else System.out.println("Erro usuario");
+                            .document(id)
+                            .delete()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        System.out.println("OK");
+                                    } else System.out.println("Error Colections");
+                                }
+                            });
+                } else System.out.println("Erro usuario");
             }
         });
     }

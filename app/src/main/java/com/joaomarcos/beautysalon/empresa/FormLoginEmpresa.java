@@ -95,6 +95,7 @@ public class FormLoginEmpresa extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressBar_login.setVisibility(View.INVISIBLE);
                 Log.d("Teste", e.getMessage());
                 Snackbar snackbar = Snackbar.make(v, "E-mail ou senha Invalidos", Snackbar.LENGTH_LONG);
                 snackbar.setBackgroundTint(Color.WHITE);

@@ -89,6 +89,7 @@ public class FormLoginCliente extends AppCompatActivity {
         String email = edit_email.getText().toString();
         String senha = edit_senha.getText().toString();
         if (email.isEmpty() || senha.isEmpty()) {
+
             Snackbar snackbar = Snackbar.make(v, "Preencha os Campos", Snackbar.LENGTH_LONG);
             snackbar.setBackgroundTint(Color.WHITE);
             snackbar.setTextColor(Color.BLACK);
@@ -115,6 +116,7 @@ public class FormLoginCliente extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                progressBar_login.setVisibility(View.INVISIBLE);
                 Log.d("Teste", e.getMessage());
                 Snackbar snackbar = Snackbar.make(v, "E-mail ou senha Invalidos", Snackbar.LENGTH_LONG);
                 snackbar.setBackgroundTint(Color.WHITE);

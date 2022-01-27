@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class ProfileEmpresa extends AppCompatActivity {
 
-    private ImageView img_home;
+    private ImageView img_home, nav_logo;
     private TextView text_nome_empresa;
     private TextView text_nome_proetario;
     private TextView text_cpf_proetario;
@@ -140,16 +140,17 @@ public class ProfileEmpresa extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    firebaseAuth.signOut();
+                    Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                     FirebaseFirestore.getInstance().collection("empresa")
                             .document(currentUser.getUid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                firebaseAuth.signOut();
-                                Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                System.out.println("OK");
                             }else System.out.println("Erro");
                         }
                     });
@@ -178,6 +179,12 @@ public class ProfileEmpresa extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        nav_logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListarCategoria.class));
+            }
+        });
     }
 
     private void inicarCompoenente() {
@@ -195,6 +202,8 @@ public class ProfileEmpresa extends AppCompatActivity {
         text_descricao = findViewById(R.id.text_descricao);
         text_telefone = findViewById(R.id.text_telefone);
         text_email = findViewById(R.id.text_email);
+
+        nav_logo = findViewById(R.id.nav_logo);
     }
 
     @Override

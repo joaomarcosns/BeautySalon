@@ -37,6 +37,16 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/categoria_s"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/tipo_categoria"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

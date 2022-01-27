@@ -1,5 +1,7 @@
 package com.joaomarcos.beautysalon.objeto;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.firestore.Exclude;
 
 public class Categoria {
@@ -9,7 +11,8 @@ public class Categoria {
     private String nome;
     private String uidEmpresa;
 
-    public Categoria(){}
+    public Categoria() {
+    }
 
     public Categoria(String nome, String uidEmpresa) {
         this.nome = nome;
@@ -38,5 +41,15 @@ public class Categoria {
 
     public void setUidEmpresa(String uidEmpresa) {
         this.uidEmpresa = uidEmpresa;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", uidEmpresa='" + uidEmpresa + '\'' +
+                '}';
     }
 }

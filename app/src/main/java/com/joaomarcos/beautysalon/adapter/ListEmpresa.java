@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,15 +23,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
-import com.joaomarcos.beautysalon.clientes.HomeCliente;
 import com.joaomarcos.beautysalon.objeto.Avaliacao;
+import com.joaomarcos.beautysalon.objeto.Categoria;
 import com.joaomarcos.beautysalon.objeto.Empresas;
 import com.joaomarcos.beautysalon.objeto.Favoritos;
 
@@ -44,10 +39,12 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
     Context context;
     ArrayList<Empresas> empresasArrayList;
     Empresas empresas;
+    ArrayList<Categoria> categoriaArrayList;
 
-    public ListEmpresa(Context context, ArrayList<Empresas> empresasArrayList) {
+    public ListEmpresa(Context context, ArrayList<Empresas> empresasArrayList, ArrayList<Categoria> categoriaArrayList) {
         this.context = context;
         this.empresasArrayList = empresasArrayList;
+        this.categoriaArrayList = categoriaArrayList;
     }
 
     @NonNull
@@ -60,9 +57,21 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Empresas emp = empresasArrayList.get(position);
+        StringBuilder categoriaString = new StringBuilder();
+
+        for (int i = 0; i < categoriaArrayList.size(); i++) {
+            if (empresasArrayList.get(position).getId().equals(categoriaArrayList.get(i).getUidEmpresa())) {
+                categoriaString
+                        .append(empresasArrayList.get(position)
+                                .getCategoriaPricipal())
+                        .append(", ")
+                        .append(categoriaArrayList.get(i).getNome())
+                        .append(", ");
+            }
+        }
 
         holder.nome_loja.setText(emp.getNomeEmpresa());
-        holder.tipo_categoria.setText(emp.getCategoriaPricipal());
+        holder.tipo_categoria.setText(categoriaString);
         holder.descricao.setText(emp.getDescricao());
     }
 
@@ -72,9 +81,14 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView nome_loja, tipo_categoria, descricao;
-        private FloatingActionButton btnWhatsapp, btnLove, btnAvaliar;
-        private RatingBar rating_bar_indicator;
+        private final TextView nome_loja;
+        private final TextView tipo_categoria;
+        private final TextView descricao;
+        private final FloatingActionButton btnWhatsapp;
+        private final FloatingActionButton btnLove;
+        private final FloatingActionButton btnAvaliar;
+        private final RatingBar rating_bar_indicator;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             nome_loja = itemView.findViewById(R.id.nome_loja);
@@ -92,11 +106,11 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
                     String telefone = "+55" + empresas.getTelefone();
                     String message = "Olá, vim pelo BEAUTY SALON";
                     Toast.makeText(context, "Abrindo o whatsapp", Toast.LENGTH_SHORT).show();
-                        context.startActivity( new Intent(Intent.ACTION_VIEW,
-                                Uri.parse(String.format("https://api.whatsapp.com/send?phone=%s&text=%s", telefone, message)
-                                )
+                    context.startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse(String.format("https://api.whatsapp.com/send?phone=%s&text=%s", telefone, message)
+                                    )
                             )
-                        );
+                    );
                 }
             });
 
@@ -112,12 +126,12 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
 
                     FirebaseFirestore.getInstance().collection("favoritos").add(favoritos)
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(context, "Adicionado ao meus favoritos", Toast.LENGTH_LONG).show();
-                            btnLove.setEnabled(false);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(context, "Adicionado ao meus favoritos", Toast.LENGTH_LONG).show();
+                                    btnLove.setEnabled(false);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.d("Teste", e.getMessage());
