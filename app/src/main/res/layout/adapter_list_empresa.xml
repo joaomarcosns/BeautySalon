@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="240dp"
+    android:layout_height="wrap_content"
     android:background="@color/background">
 
     <LinearLayout
@@ -62,36 +62,41 @@
                     android:numStars="5"
                     android:rating="3.5"
                     android:stepSize="0.5"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/text_descriao"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="30dp"
-            android:text="Descrição"
-            android:textAlignment="viewStart"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            app:layout_constraintVertical_bias="0.0" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/descricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/text_descriao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="30dp"
+                android:text="Descrição"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="ashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjasgdashgdhjaashgdhjasgdashgdhjasgdashgdhjasgdsgdashgdhjasgdashgdhjasgdashgdhjasgd"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="30dp"
             android:gravity="end"
             android:orientation="horizontal">
 
@@ -102,10 +107,10 @@
                 android:layout_gravity="center|end"
                 android:backgroundTint="@color/nav"
                 android:contentDescription="TODO"
+                android:visibility="invisible"
                 app:backgroundTint="@color/nav"
                 app:srcCompat="@drawable/ic_star"
-                app:tint="@color/white"
-                android:visibility="invisible"/>
+                app:tint="@color/white" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnLove"
@@ -115,17 +120,16 @@
                 android:layout_marginStart="15dp"
                 android:backgroundTint="@color/red"
                 android:contentDescription="TODO"
+                android:visibility="invisible"
                 app:backgroundTint="@color/red"
                 app:rippleColor="@color/red"
                 app:srcCompat="@drawable/ic_love"
-                app:tint="@color/white"
-                android:visibility="invisible"/>
+                app:tint="@color/white" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnWhatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
                 android:layout_marginStart="15dp"
                 android:backgroundTint="@color/btnwhatsapp"
                 android:contentDescription="TODO"
