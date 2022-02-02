@@ -68,7 +68,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_atualizar"
         style="@style/btnLogin"
-        android:hint="@string/cadastrar"
+        android:hint="@string/atualizar_perfil"
         android:textColor="@color/black"
         android:textColorHighlight="@color/black"
         android:textColorHint="@color/black"

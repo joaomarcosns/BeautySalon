@@ -81,6 +81,7 @@ public class HomeEmpresa extends AppCompatActivity {
                             tipo_categoria.setText(value.getString("categoriaPricipal"));
                             descricao.setText(value.getString("descricao"));
                             text_nome_empresa.setText(value.getString("nomeEmpresa"));
+                            categorias.append(tipo_categoria.getText().toString());
                         }
                     }
                 });
@@ -93,8 +94,9 @@ public class HomeEmpresa extends AppCompatActivity {
                         if (value != null) {
                             for (DocumentChange doc : value.getDocumentChanges()) {
                                 if (doc.getType() == DocumentChange.Type.ADDED) {
+
                                     Categoria cat = doc.getDocument().toObject(Categoria.class);
-                                    categorias.append(tipo_categoria.getText().toString())
+                                    categorias
                                             .append(", ")
                                             .append(cat.getNome())
                                             .append(", ");

@@ -58,18 +58,17 @@ public class ListEmpresa extends RecyclerView.Adapter<ListEmpresa.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Empresas emp = empresasArrayList.get(position);
         StringBuilder categoriaString = new StringBuilder();
-
+        categoriaString
+                .append(empresasArrayList.get(position)
+                        .getCategoriaPricipal());
         for (int i = 0; i < categoriaArrayList.size(); i++) {
             if (empresasArrayList.get(position).getId().equals(categoriaArrayList.get(i).getUidEmpresa())) {
                 categoriaString
-                        .append(empresasArrayList.get(position)
-                                .getCategoriaPricipal())
                         .append(", ")
                         .append(categoriaArrayList.get(i).getNome())
-                        .append(", ");
+                        .append(" ");
             }
         }
-
         holder.nome_loja.setText(emp.getNomeEmpresa());
         holder.tipo_categoria.setText(categoriaString);
         holder.descricao.setText(emp.getDescricao());

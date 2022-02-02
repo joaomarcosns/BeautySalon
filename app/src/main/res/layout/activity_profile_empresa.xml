@@ -162,9 +162,8 @@
 
                 <TextView
                     android:id="@+id/text_descricao"
-                    style="@style/EditTextEmpresa"
+                    style="@style/categoria"
                     android:gravity="top|left"
-                    android:lines="6"
                     android:overScrollMode="always"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
@@ -210,12 +209,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_atualizar_senha"
-                        android:layout_width="340dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/btn"
                         android:text="@string/alterar_senha"
                         android:textColor="@color/white"
@@ -224,10 +223,10 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btm_editar"
-                        android:layout_width="340dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="@color/btn"
@@ -238,12 +237,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_sair"
-                        android:layout_width="340dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/btn"
                         android:text="@string/sair"
                         android:textColor="@color/white"
@@ -252,12 +251,12 @@
 
                     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                         android:id="@+id/btn_apagar"
-                        android:layout_width="340dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center|end"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/red"
                         android:text="@string/apagar_conta"
                         android:textColor="@color/white"

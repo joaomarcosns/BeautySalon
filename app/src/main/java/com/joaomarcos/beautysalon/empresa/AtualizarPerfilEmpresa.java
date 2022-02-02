@@ -89,13 +89,17 @@ public class AtualizarPerfilEmpresa extends AppCompatActivity implements Adapter
     private void cadastra(String nomeEmpresa, String nomeProprietario, String cpfProprietario, String telefoneEmpresa, String descricao, View v) {
         Empresas emp = new Empresas();
         emp.setId(empresas.getId());
-        empresas.setNomeEmpresa(nomeEmpresa);
-        empresas.setNomeDono(nomeProprietario);
-        empresas.setCpfDono(cpfProprietario);
-        empresas.setCategoriaPricipal(categoria);
-        empresas.setDescricao(descricao);
-        empresas.setTelefone(telefoneEmpresa);
-        empresas.setNivelAcesso(2);
+        emp.setNomeEmpresa(nomeEmpresa);
+        emp.setNomeDono(nomeProprietario);
+        emp.setCpfDono(cpfProprietario);
+        emp.setDescricao(descricao);
+        emp.setTelefone(telefoneEmpresa);
+        emp.setNivelAcesso(2);
+        if (categoria == null) {
+            emp.setCategoriaPricipal(empresas.getCategoriaPricipal());
+        }else {
+            emp.setCategoriaPricipal(categoria);
+        }
 
         FirebaseFirestore.getInstance().collection("empresa")
                 .document(emp.getId())
@@ -104,7 +108,9 @@ public class AtualizarPerfilEmpresa extends AppCompatActivity implements Adapter
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getApplicationContext(), "Conta Atualizada", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), ProfileCliente.class));
+                        Intent intent = new Intent(getApplicationContext(), ProfileEmpresa.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

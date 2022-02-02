@@ -1,8 +1,10 @@
 package com.joaomarcos.beautysalon.empresa;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,12 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.joaomarcos.beautysalon.AlterarSenha;
 import com.joaomarcos.beautysalon.MainActivity;
 import com.joaomarcos.beautysalon.R;
-import com.joaomarcos.beautysalon.clientes.ProfileCliente;
 import com.joaomarcos.beautysalon.objeto.Empresas;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
 import java.util.Objects;
 
 public class ProfileEmpresa extends AppCompatActivity {
@@ -62,8 +60,23 @@ public class ProfileEmpresa extends AppCompatActivity {
         footerNavigation();
         deslogar();
         deletar();
+        scrollViewDescricao();
         editar();
         atualizarSenha();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void scrollViewDescricao() {
+        text_descricao.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_UP) {
+                    v.getParent().requestDisallowInterceptTouchEvent(false);
+                }
+                return false;
+            }
+        });
     }
 
     private void editar() {
@@ -134,29 +147,54 @@ public class ProfileEmpresa extends AppCompatActivity {
     private void apagar() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
-        assert currentUser != null;
-        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+        String id = firebaseAuth.getUid();
+        System.out.println(id);
+        assert id != null;
+        FirebaseFirestore.getInstance().collection("empresa")
+                .document(id).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    firebaseAuth.signOut();
-                    Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    FirebaseFirestore.getInstance().collection("empresa")
-                            .document(currentUser.getUid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    assert currentUser != null;
+                    currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
-                                System.out.println("OK");
-                            }else System.out.println("Erro");
+                                firebaseAuth.signOut();
+                                Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
                         }
                     });
-                }else Toast.makeText(getApplicationContext(), "Erro ao Apagar", Toast.LENGTH_LONG).show();
+                } else System.out.println("Erro");
             }
         });
+
+
+//        assert currentUser != null;
+//        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    firebaseAuth.signOut();
+//                    Toast.makeText(getApplicationContext(), "Conta Apagada com sucesso", Toast.LENGTH_LONG).show();
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                    FirebaseFirestore.getInstance().collection("empresa")
+//                            .document(currentUser.getUid()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if (task.isSuccessful()) {
+//                                System.out.println("OK");
+//                            }else System.out.println("Erro");
+//                        }
+//                    });
+//                }else Toast.makeText(getApplicationContext(), "Erro ao Apagar", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     private void deslogar() {

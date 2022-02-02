@@ -39,6 +39,8 @@ import com.joaomarcos.beautysalon.objeto.Categoria;
 import com.joaomarcos.beautysalon.objeto.Empresas;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FormCadastroEmpresa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -82,6 +84,10 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
                 String senha = edit_senha.getText().toString();
                 String comfirmarSenha = edit_comfirma_senha.getText().toString();
 
+                Pattern pattern = Pattern.compile("[0-9]");
+                Matcher SlNomeEmpra = pattern.matcher(nomeEmpresa);
+                Matcher SlProorietario = pattern.matcher(nomeProprietario);
+
                 if (nomeEmpresa.isEmpty() || nomeProprietario.isEmpty() || cpfProprietario.isEmpty()
                         || telefoneEmpresa.isEmpty() || descricao.isEmpty() || email.isEmpty()
                         || senha.isEmpty() || comfirmarSenha.isEmpty()) {
@@ -94,7 +100,17 @@ public class FormCadastroEmpresa extends AppCompatActivity implements AdapterVie
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                } else {
+                } else if (SlNomeEmpra.find()) {
+                    Snackbar snackbar = Snackbar.make(v, "Somente letras", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                } else if (SlProorietario.find()) {
+                    Snackbar snackbar = Snackbar.make(v, "Somente letras", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                }else {
                     cadastrarEmpresa(v);
                 }
             }

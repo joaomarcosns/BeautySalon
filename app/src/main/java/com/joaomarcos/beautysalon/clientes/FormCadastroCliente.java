@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
@@ -23,12 +24,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.joaomarcos.beautysalon.R;
 import com.joaomarcos.beautysalon.objeto.Clientes;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class FormCadastroCliente extends AppCompatActivity {
@@ -80,6 +87,26 @@ public class FormCadastroCliente extends AppCompatActivity {
                 String senha = edit_senha.getText().toString();
                 String comfirmarSenha = edit_comfirma_senha.getText().toString();
 
+                System.out.println(cpf);
+                FirebaseFirestore.getInstance().collection("cliente")
+                        .whereEqualTo("cpf", cpf)
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                if (value!= null ) {
+                                    System.out.println("TEm cpf " + cpf);
+                                    Snackbar snackbar = Snackbar.make(v, "Preencha todos os campos", Snackbar.LENGTH_LONG);
+                                    snackbar.setBackgroundTint(Color.WHITE);
+                                    snackbar.setTextColor(Color.BLACK);
+                                    snackbar.show();
+                                    return;
+                                }
+                            }
+                        });
+
+                Pattern pattern = Pattern.compile("[0-9]");
+                Matcher SlNomeEmpra = pattern.matcher(nome);
+
                 if (nome.isEmpty() || cpf.isEmpty() || telefone.isEmpty() || email.isEmpty() || senha.isEmpty() || comfirmarSenha.isEmpty()) {
                     Snackbar snackbar = Snackbar.make(v, "Preencha todos os campos", Snackbar.LENGTH_LONG);
                     snackbar.setBackgroundTint(Color.WHITE);
@@ -95,8 +122,12 @@ public class FormCadastroCliente extends AppCompatActivity {
                     snackbar.setBackgroundTint(Color.WHITE);
                     snackbar.setTextColor(Color.BLACK);
                     snackbar.show();
-                }
-                else {
+                }else if (SlNomeEmpra.find()) {
+                    Snackbar snackbar = Snackbar.make(v, "Somente letras", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(Color.WHITE);
+                    snackbar.setTextColor(Color.BLACK);
+                    snackbar.show();
+                }else {
                     cadastrarCliente(v);
                 }
             }

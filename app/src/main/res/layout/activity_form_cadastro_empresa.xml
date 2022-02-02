@@ -68,7 +68,7 @@
         android:gravity="top|left"
         android:hint="@string/descricao"
         android:inputType="textMultiLine"
-        android:lines="6"
+        android:lines="8"
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
